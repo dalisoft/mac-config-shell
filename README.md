@@ -23,7 +23,7 @@ cd mac-config-bash
 
 ## Old history
 
-Look at [here](https://github.com/dalisoft/config/commits/master), starting at <https://github.com/dalisoft/config/commit/78c55d1182d93ccde8b5a82958ee3afbbbf9e2bd> commit
+Look at [here](https://github.com/dalisoft/config/commits/master), starting at <https://github.com/dalisoft/config/commit/78c55d1182d93ccde8b5a82958ee3afbbbf9e2bd> until <https://github.com/dalisoft/config/commit/f3520b3ca013d855f2b02d00af0ee5d7bd43086a> commit
 
 ## License
 
