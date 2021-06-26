@@ -106,12 +106,12 @@ function pre_installation {
 
   ## Link folders
   for link_folder in "${LINK_FOLDERS[@]}"; do
-    ln -h -f -s "$HOME/Desktop/config/dotfiles/$link_folder" "$HOME/$link_folder"
+    ln -h -s "$HOME/Desktop/config/dotfiles/$link_folder" "$HOME/$link_folder"
   done
 
   ## Link files
   for link_file in "${LINK_FILES[@]}"; do
-    ln -h -f "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
+    ln -h "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
   done
 }
 
