@@ -1,0 +1,5 @@
+cask "anaconda"
+cask "anydesk"
+cask "firefox"
+cask "google-chrome"
+cask "webstorm"
