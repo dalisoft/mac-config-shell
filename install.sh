@@ -16,7 +16,7 @@ MAX_TRIES=5
 
 ENSURE_FOLDERS=(".npm-global" "Desktop/config/dotfiles/.vim/autoload")
 LINK_FOLDERS=(".nano" ".vim" ".config")
-LINK_FILES=(".vimrc")
+LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
 
 NPM_PACKAGES=("npm" "0x" "bs-platform" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "psrecord")
@@ -100,6 +100,16 @@ function pre_installation {
 
   echo "Pre-installation steps..."
 
+  echo ""
+  echo "This step removes all of your previous config"
+  read -p "Did you already backup up your config? [Y]es/[N]o:  " backup_ask
+
+  if [[ $backup_ask != "Y" && $backup_ask != "N" ]]; then
+    echo "Please type *Y* or *N* !"
+    echo "Wrong answer, exiting."
+    exit 1
+  fi
+
   ## Ensure these folders exists
   for ensure_folder in "${ENSURE_FOLDERS[@]}"; do
     mkdir -p "$HOME/$ensure_folder"
@@ -107,12 +117,18 @@ function pre_installation {
 
   ## Link folders
   for link_folder in "${LINK_FOLDERS[@]}"; do
-    ln -vfs "$HOME/Desktop/config/dotfiles/$link_folder/" "$HOME/$link_folder"
+    if [[ $backup_ask == "Y" ]]; then
+      rm -rf "$HOME/$link_folder"
+    fi
+    ln -vhs "$HOME/Desktop/config/dotfiles/$link_folder/" "$HOME/$link_folder"
   done
 
   ## Link files
   for link_file in "${LINK_FILES[@]}"; do
-    ln -vf "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
+    if [[ $backup_ask == "Y" ]]; then
+      rm -rf "$HOME/$link_file"
+    fi
+    ln -vh "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
   done
 }
 
