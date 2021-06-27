@@ -7,15 +7,16 @@ set -e
 PASSWORD=$1
 MODE=$2
 ARCH=$(uname -m)
+PWD=$(pwd)
 
 ##############################
 ### Installation variables ###
 ##############################
 MAX_TRIES=5
 
-ENSURE_FOLDERS=(".config" ".config/fish" ".config/nvim" ".config/htop" ".npm-global" "Desktop/config/dotfiles/.vim/autoload")
-LINK_FILES=(".vimrc" ".config/starship.toml")
-LINK_FOLDERS=(".nano" ".vim" ".config/fish" ".config/nvim" ".config/htop")
+ENSURE_FOLDERS=(".npm-global" "Desktop/config/dotfiles/.vim/autoload")
+LINK_FOLDERS=(".nano" ".vim" ".config")
+LINK_FILES=(".vimrc")
 
 NPM_PACKAGES=("npm" "0x" "bs-platform" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "psrecord")
@@ -106,12 +107,12 @@ function pre_installation {
 
   ## Link folders
   for link_folder in "${LINK_FOLDERS[@]}"; do
-    ln -h -s "$HOME/Desktop/config/dotfiles/$link_folder" "$HOME/$link_folder"
+    ln -vfs "$HOME/Desktop/config/dotfiles/$link_folder/" "$HOME/$link_folder"
   done
 
   ## Link files
   for link_file in "${LINK_FILES[@]}"; do
-    ln -h "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
+    ln -vf "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
   done
 }
 
@@ -151,7 +152,6 @@ function install_package_manager {
 function install_system_packages {
   echo "------"
 
-  PWD=$(pwd)
   BREWFILE_PATH="${ARCH}_$MODE"
 
   rm -rf Brewfile
@@ -173,7 +173,7 @@ function install_system_packages {
   # Installing bundle
   brew bundle --force --no-lock
 
-  rm -rf Brewfile
+  rm -rf $PWD/Brewfile
 }
 
 ### Installation npm packages
@@ -249,7 +249,7 @@ function post_installation {
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
-  if cat /etc/shells | grep "$FISH_SHELL_PATH" >>/dev/null; then
+  if grep -o "$FISH_SHELL_PATH" /etc/shells >>/dev/null; then
     echo "Already set fish as list of shells"
   else
     echo $FISH_SHELL_PATH | sudo -A tee -a /etc/shells
