@@ -4,10 +4,12 @@ set -e
 #############################
 ### Environment variables ###
 #############################
-PASSWORD=$1
-MODE=$2
+read -p "Enter your password: " PASSWORD
+read -p "Enter installation mode: minimal, compact or all [minimal]: " MODE
+MODE=${MODE:-minimal}
 ARCH=$(uname -m)
 PWD=$(pwd)
+OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 
 ##############################
 ### Installation variables ###
@@ -83,6 +85,49 @@ function sudo_access_check {
 }
 
 #############################
+### Optimizations  Set-up ###
+#############################
+# See link for more info
+# https://blog.macstadium.com/blog/simple-optimizations-for-macos-and-ios-build-agents
+function optimziations_setup {
+  echo "------"
+
+  echo "Optimizations steps..."
+
+  echo ""
+  ## Disable Spotlight
+  MIN_OS=10.14
+  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
+    sudo -A launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+  else
+    echo "You running latest *macOS*"
+    echo "You should disable SIP"
+    echo "to disable *Spotlight*"
+  fi
+
+  sudo -A mdutil -a -i off
+  sudo -A defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+  killall mds >/dev/null 2>&1
+  sudo -A mdutil -a -i off
+
+  ## Disable Siri
+  MIN_OS=10.14
+  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
+    sudo -A plutil -replace Disabled -bool true /System/Library/LaunchAgents/com.apple.Siri.agent.plist || echo "Siri cannot be disabled, SIP enabled"
+  else
+    echo "You running latest *macOS*"
+    echo "You should disable SIP"
+    echo "to disable *Siri*"
+  fi
+  defaults write com.apple.Siri StatusMenuVisible -bool false
+  defaults write com.apple.Siri UserHasDeclinedEnable -bool true
+  defaults write com.apple.assistant.support "Assistant Enabled" 0
+
+  ## Disable Software Update
+  sudo -A softwareupdate --schedule off
+}
+
+#############################
 ### Run preparation steps ###
 #############################
 function check_and_prepare {
@@ -102,7 +147,8 @@ function pre_installation {
 
   echo ""
   echo "This step removes all of your previous config"
-  read -p "Did you already backup up your config? [Y]es/[N]o:  " backup_ask
+  read -p "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
+  backup_ask=${backup_ask:-Y}
 
   if [[ $backup_ask != "Y" && $backup_ask != "N" ]]; then
     echo "Please type *Y* or *N* !"
@@ -279,6 +325,7 @@ function post_installation {
 #############################
 function installation {
   pre_installation
+  optimziations_setup
 
   install_package_manager
   install_system_packages
