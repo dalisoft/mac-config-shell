@@ -36,6 +36,7 @@ brew "gradle"
 brew "htop"
 brew "llvm"
 brew "mas"
+brew "mkcert"
 brew "mosh"
 brew "nano"
 brew "neofetch"
@@ -63,15 +64,16 @@ brew "wrk", args: ["HEAD"]
 brew "yarn"
 brew "heroku/brew/heroku"
 brew "mongodb/brew/mongodb-community"
+cask "1password"
 cask "4k-video-downloader"
 cask "adguard-nightly"
+cask "adguard-vpn"
+cask "adobe-creative-cloud"
 cask "adoptopenjdk11"
-cask "aldente"
 cask "altair-graphql-client"
 cask "anaconda"
 cask "android-file-transfer"
 cask "android-studio-preview-canary"
-cask "anka-virtualization"
 cask "anydesk"
 cask "app-cleaner"
 cask "browserstacklocal"
@@ -82,11 +84,8 @@ cask "docker"
 cask "firefox"
 cask "folx"
 cask "font-fira-code"
-cask "ganttproject"
-cask "gitkraken"
 cask "iina"
 cask "imazing"
-cask "kdiff3"
 cask "krisp"
 cask "lulu"
 cask "macs-fan-control"
@@ -94,41 +93,31 @@ cask "macupdater"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
 cask "notion"
-cask "obs"
-cask "octave-app"
 cask "paw"
-cask "postman"
 cask "qlcolorcode"
 cask "qlimagesize"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "silicon"
-cask "steam"
+cask "slack"
+cask "telegram"
+cask "the-unarchiver"
 cask "utm"
 cask "visual-studio-code"
-cask "vlc"
-cask "vmware-fusion"
-cask "webstorm"
-mas "1Password 7", id: 1333542190
 mas "Apple Configurator 2", id: 1037126344
-mas "Blackmagic RAW Speed Test", id: 1466185689
+mas "Asphalt 8+", id: 1563005359
 mas "Developer", id: 640199958
-mas "Disk Speed Test", id: 425264550
 mas "iMovie", id: 408981434
 mas "Medis", id: 1579200037
-mas "Medis", id: 1063631769
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
-mas "NextDNS", id: 1464122853
+mas "Newsify", id: 510153374
 mas "Ora", id: 1340501510
 mas "Racompass", id: 1538380685
 mas "Sequel Ace", id: 1518036000
-mas "Slack", id: 803453959
-mas "Speedify", id: 999025824
 mas "Speedtest", id: 1153157709
-mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
