@@ -309,6 +309,9 @@ function post_installation {
   # neovim plugins installation
   nvim -c "PlugInstall" -c "qa"
 
+  # link OpenJDK
+  sudo -A ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
   if grep -o "$FISH_SHELL_PATH" /etc/shells >>/dev/null; then
