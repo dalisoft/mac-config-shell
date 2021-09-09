@@ -59,6 +59,7 @@ brew "starship"
 brew "tmux"
 brew "unzip"
 brew "watchman"
+brew "websocat"
 brew "wget"
 brew "wrk", args: ["HEAD"]
 brew "yarn"
@@ -87,18 +88,17 @@ cask "glance"
 cask "iina"
 cask "imazing"
 cask "krisp"
-cask "lulu"
 cask "macs-fan-control"
 cask "macupdater"
 cask "microsoft-edge"
 cask "miniforge"
+cask "netnewswire"
 cask "notion"
 cask "octave-app"
 cask "paw"
 cask "postico"
 cask "silicon"
 cask "slack"
-cask "sqlpro-studio"
 cask "telegram"
 cask "the-unarchiver"
 cask "utm"
@@ -112,9 +112,7 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
-mas "Newsify", id: 510153374
 mas "Ora", id: 1340501510
-mas "Racompass", id: 1538380685
 mas "Sequel Ace", id: 1518036000
 mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
