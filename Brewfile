@@ -120,6 +120,5 @@ mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
-mas "Trello", id: 1278508951
 mas "WebSocket Client", id: 1399498094
 mas "Xcode", id: 497799835
