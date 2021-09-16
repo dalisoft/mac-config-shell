@@ -76,14 +76,14 @@ cask "anydesk"
 cask "app-cleaner"
 cask "browserstacklocal"
 cask "boop"
-cask "coconutbattery"
+#cask "coconutbattery"
 cask "cyberduck"
 cask "datagrip"
 cask "docker"
 cask "firefox"
 cask "folx"
-cask "framer"
 cask "font-fira-code"
+cask "framer"
 cask "glance"
 cask "iina"
 cask "imazing"
@@ -95,10 +95,10 @@ cask "miniforge"
 cask "miro"
 cask "netnewswire"
 cask "notion"
+cask "numi"
 cask "octave-app"
 cask "paw"
-cask "postico"
-cask "silicon"
+#cask "silicon"
 cask "slack"
 cask "telegram"
 cask "the-unarchiver"
@@ -111,11 +111,9 @@ mas "iMovie", id: 408981434
 mas "Medis", id: 1579200037
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Ora", id: 1340501510
 mas "Sequel Ace", id: 1518036000
-mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
