@@ -117,7 +117,6 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Ora", id: 1340501510
 mas "Sequel Ace", id: 1518036000
-mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
 mas "WebSocket Client", id: 1399498094
