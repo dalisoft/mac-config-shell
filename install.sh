@@ -193,16 +193,6 @@ function install_package_manager {
     sudo -A xcode-select --install
   fi
 
-  # Rosetta installation for Apple Silicon
-  # This is required to run x64/x86 apps
-  if [[ "$ARCH" == "arm64" ]]; then
-    if [[ ! -f "/Library/Apple/System/Library/LaunchDaemons/com.apple.oahd.plist" ]]; then
-      sudo -A softwareupdate --install-rosetta --agree-to-license
-    else
-      echo "Rosetta is already installed. Continue process..."
-    fi
-  fi
-
   # Install Homebrew
   if brew --version >>/dev/null; then
     echo "Homebrew is already installed! Continue process..."
@@ -214,28 +204,8 @@ function install_package_manager {
 function install_system_packages {
   echo "------"
 
-  BREWFILE_PATH="${ARCH}_$MODE"
-
-  rm -rf Brewfile
-  touch Brewfile
-  cat "$PWD/base/Brewfile" >>Brewfile
-  echo "" >>Brewfile # empty space for fix newline bug
-  if [[ "$MODE" == "compact" ]]; then
-    cat "$PWD/${ARCH}_minimal/Brewfile" >>Brewfile
-    echo "" >>Brewfile # empty space for fix newline bug
-  fi
-  if [[ "$MODE" == "all" ]]; then
-    cat "$PWD/${ARCH}_minimal/Brewfile" >>Brewfile
-    echo "" >>Brewfile # empty space for fix newline bug
-    cat "$PWD/${ARCH}_compact/Brewfile" >>Brewfile
-    echo "" >>Brewfile # empty space for fix newline bug
-  fi
-  cat "$PWD/$BREWFILE_PATH/Brewfile" >>Brewfile
-
   # Installing bundle
-  brew bundle --force --no-lock
-
-  rm -rf $PWD/Brewfile
+  brew bundle --no-lock
 }
 
 ### Installation npm packages
