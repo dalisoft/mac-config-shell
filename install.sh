@@ -8,6 +8,7 @@ read -p "Enter your password: " PASSWORD
 ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
+BREW_PREFIX=$(brew --prefix)
 
 ##############################
 ### Installation variables ###
@@ -21,7 +22,7 @@ LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
 NPM_PACKAGES=("npm" "0x" "bs-platform" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "psrecord")
 
-FNM_VERSIONS=("12.22.5" "14.17.5")
+FNM_VERSIONS=("12.22.6" "14.17.6")
 
 #############################
 ### Preparations of steps ###
@@ -50,7 +51,7 @@ function configure_askpass {
 function configure_env {
   export NPM_CONFIG_PREFIX="~/.npm-global"
   export SUDO_ASKPASS=$(pwd)/askpass.sh
-  export PATH="$NPM_CONFIG_PREFIX/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+  export PATH="$NPM_CONFIG_PREFIX/bin:$BREW_PREFIX/bin:$PATH"
 }
 ### Check for SUDO
 ### access check to
@@ -237,12 +238,7 @@ function install_pip_packages {
 function install_mas_apps {
   echo "------"
 
-  # iMovie
-  mas install 408981434
-  # Medis
-  mas install 1063631769
-  # Racompass
-  mas install 1538380685
+  echo "Installed already via Homebrew"
 }
 
 ## Installation Node.js versions
@@ -271,8 +267,11 @@ function post_installation {
   # neovim plugins installation
   nvim -c "PlugInstall" -c "qa"
 
+  # use XCode SDK tools
+  sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
+
   # link OpenJDK
-  sudo -A ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+  sudo -A ln -sfn $BREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)

@@ -11,7 +11,7 @@ No installation required, it's just basic and clean "bash" script
 ```bash
 git clone https://github.com/dalisoft/mac-config-bash.git
 cd mac-config-bash
-./install.sh "YOUR_PASSWORD" "MODE"
+./install.sh "YOUR_PASSWORD"
 ```
 
 ## Options
@@ -19,7 +19,6 @@ cd mac-config-bash
 | Option   | Example                             | Description                         |
 | -------- | ----------------------------------- | ----------------------------------- |
 | Password | `./install.sh "1234" "MODE"`        | Your account/root password          |
-| Mode     | `./install.sh "PASSWORD" "compact"` | Modes: `minimal`,`compact` or `all` |
 
 ## Old history
 
