@@ -5,8 +5,6 @@ set -e
 ### Environment variables ###
 #############################
 read -p "Enter your password: " PASSWORD
-read -p "Enter installation mode: minimal, compact or all [minimal]: " MODE
-MODE=${MODE:-minimal}
 ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
@@ -36,12 +34,6 @@ function check_env {
     echo "Hey, welcome! please trust me"
     echo "and enter valid password here"
     echo "I hope you understand me..."
-    exit 1
-  fi
-  if [[ "$MODE" != "minimal" && $MODE != "compact" && $MODE != "full" ]]; then
-    echo "Hey, welcome!"
-    echo "Please select any of these values"
-    echo "minimal, compact, full"
     exit 1
   fi
 }
@@ -303,16 +295,10 @@ function installation {
   install_package_manager
   install_system_packages
 
-  ## Install npm and pip packages
-  ## only on *compact* and *full*
-  ## modes so all of these tools
-  ## does not conflicts
-  if [[ "$MODE" != "minimal" ]]; then
-    install_npm_packages
-    install_fnm_versions
-    install_pip_packages
-    install_mas_apps
-  fi
+  install_npm_packages
+  install_fnm_versions
+  install_pip_packages
+  install_mas_apps
 
   # Post-installation
   post_installation
