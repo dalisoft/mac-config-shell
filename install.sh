@@ -271,7 +271,10 @@ function post_installation {
   sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
 
   # link OpenJDK
-  sudo -A ln -sfn $BREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+  sudo -A ln -sfn $BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk
+
+  # locate `RemMe`
+  sudo -A ln -vh $(pwd)/remme.sh $BREW_PREFIX/bin/remme
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
