@@ -15,7 +15,7 @@ BREW_PREFIX=$(brew --prefix)
 ##############################
 MAX_TRIES=5
 
-ENSURE_FOLDERS=(".npm-global" "Desktop/config/dotfiles/.vim/autoload")
+ENSURE_FOLDERS=(".npm-global" "Desktop/dotfiles/.vim/autoload")
 LINK_FOLDERS=(".nano" ".vim" ".config")
 LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
 
@@ -160,7 +160,7 @@ function pre_installation {
     if [[ $backup_ask == "Y" ]]; then
       rm -rf "$HOME/$link_folder"
     fi
-    ln -vhs "$HOME/Desktop/config/dotfiles/$link_folder/" "$HOME/$link_folder"
+    ln -vhs "$HOME/Desktop/dotfiles/$link_folder/" "$HOME/$link_folder"
   done
 
   ## Link files
@@ -168,7 +168,7 @@ function pre_installation {
     if [[ $backup_ask == "Y" ]]; then
       rm -rf "$HOME/$link_file"
     fi
-    ln -vh "$HOME/Desktop/config/dotfiles/$link_file" "$HOME/$link_file"
+    ln -vh "$HOME/Desktop/dotfiles/$link_file" "$HOME/$link_file"
   done
 }
 
@@ -266,6 +266,7 @@ function post_installation {
   echo "Pre-installation steps..."
 
   # neovim plugins installation
+  wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa"
 
   # use XCode SDK tools
