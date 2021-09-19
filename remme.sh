@@ -33,7 +33,7 @@ APP_NAME=$(/usr/libexec/PlistBuddy -c "print CFBundleName" "$1/Contents/Info.pli
 APP_IDENTIFIER=$(/usr/libexec/PlistBuddy -c "print CFBundleIdentifier" "$1/Contents/Info.plist" 2>/dev/null)
 
 # Remove app itself
-sudo rm -rf $1
+sudo rm -rf "$1"
 
 # Cleanup apps from these folders
 for folder in "${CLEAN_FOLDERS[@]}"; do
