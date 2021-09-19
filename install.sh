@@ -199,7 +199,7 @@ function install_system_packages {
   echo "------"
 
   # Installing bundle
-  brew bundle --no-lock
+  brew bundle --no-lock --verbose
 }
 
 ### Installation npm packages
