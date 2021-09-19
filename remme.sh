@@ -26,6 +26,7 @@ CLEAN_FOLDERS=(
 if [[ "$1" == "" ]]; then
   echo "Application path is required!"
   echo "example, /Applications/XCode.app"
+  exit 0
 fi
 
 # Identify Apps
