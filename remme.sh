@@ -16,11 +16,12 @@ CLEAN_FOLDERS=(
   "$HOME/Library/Preferences"
   "$HOME/Library/Caches"
   "$HOME/Library/Logs"
-  "$HOME/Library/Containers"
   "$HOME/Library/Application Scripts"
   "$HOME/Library/Application Support"
+  "$HOME/Library/Containers"
   # Temporarily folders
   "/var/folders"
+  "/var/db/receipts"
   "/var/db"
 )
 
