@@ -21,6 +21,7 @@ CLEAN_FOLDERS=(
   "$HOME/Library/Application Support"
   # Temporarily folders
   "/var/folders"
+  "/var/db"
 )
 
 if [[ "$1" == "" ]]; then
