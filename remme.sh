@@ -38,6 +38,12 @@ sudo rm -rf "$1"
 
 # Cleanup apps from these folders
 for folder in "${CLEAN_FOLDERS[@]}"; do
-  sudo find "$folder" -d -iname "$APP_IDENTIFIER*" -delete 2>/dev/null || echo "" >/dev/null
-  sudo find "$folder" -d -iname "$APP_NAME*" -delete 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "$APP_IDENTIFIER" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "$APP_IDENTIFIER*" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "*$APP_IDENTIFIER" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "*$APP_IDENTIFIER*" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "$APP_NAME" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "$APP_NAME*" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "*$APP_NAME" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
+  sudo find "$folder" -d -iname "*$APP_NAME*" -exec rm -rf {} + 2>/dev/null || echo "" >/dev/null
 done
