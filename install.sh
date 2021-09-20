@@ -8,7 +8,6 @@ read -p "Enter your password: " PASSWORD
 ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
-BREW_PREFIX=$(brew --prefix)
 
 ##############################
 ### Installation variables ###
@@ -52,7 +51,7 @@ function configure_askpass {
 function configure_env {
   export NPM_CONFIG_PREFIX="~/.npm-global"
   export SUDO_ASKPASS=$(pwd)/askpass.sh
-  export PATH="$NPM_CONFIG_PREFIX/bin:$BREW_PREFIX/bin:$PATH"
+  export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:$PATH"
 }
 ### Check for SUDO
 ### access check to
@@ -263,7 +262,10 @@ function install_fnm_versions {
 function post_installation {
   echo "------"
 
-  echo "Pre-installation steps..."
+  # Load post-environment variables
+  BREW_PREFIX=$(brew --prefix)
+
+  echo "Post-installation steps..."
 
   # neovim plugins installation
   wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -271,6 +273,7 @@ function post_installation {
 
   # use XCode SDK tools
   sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
+  sudo -A xcodebuild -license accept
 
   # link OpenJDK
   sudo -A ln -sfn $BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk
