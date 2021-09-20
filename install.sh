@@ -15,7 +15,7 @@ OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MAX_TRIES=5
 
 ENSURE_FOLDERS=(".npm-global" "Desktop/dotfiles/.vim/autoload")
-LINK_FOLDERS=(".nano" ".vim" ".config")
+LINK_FOLDERS=(".nano" ".vim" ".config", ".gnupg")
 LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
 
 # M1 incompatible npm packages: "bs-platform"
