@@ -24,7 +24,6 @@ brew "ffmpeg"
 brew "fish"
 brew "fnm"
 brew "git"
-brew "qt"
 brew "git-cola"
 brew "git-gui"
 brew "git-lfs"
@@ -45,10 +44,11 @@ brew "openblas"
 brew "openjdk@11"
 brew "php"
 brew "pinentry-mac"
+brew "qemu"
 brew "podman"
 brew "postgresql"
+brew "qt"
 brew "pyqt"
-brew "qemu"
 brew "rclone"
 brew "ripgrep"
 brew "rsync"
@@ -76,7 +76,6 @@ cask "android-studio"
 cask "anydesk"
 cask "app-cleaner"
 cask "browserstacklocal"
-cask "boop"
 #cask "coconutbattery"
 cask "cyberduck"
 cask "datagrip"
@@ -86,8 +85,6 @@ cask "firefox"
 cask "folx"
 cask "font-fira-code"
 cask "framer"
-cask "github"
-cask "glance"
 cask "iina"
 cask "imazing"
 cask "krisp"
@@ -106,20 +103,25 @@ cask "postman"
 cask "slack"
 cask "sublime-text"
 cask "telegram"
-cask "the-unarchiver"
 cask "utm"
 cask "visual-studio-code"
 mas "Apple Configurator 2", id: 1037126344
 mas "Asphalt 8+", id: 1563005359
+mas "Boop", id: 1518425043
+mas "Data Modeler", id: 1575153701
 mas "Developer", id: 640199958
 mas "iMovie", id: 408981434
+mas "iPreview", id: 1519213509
 mas "Medis", id: 1579200037
 mas "Microsoft Excel", id: 462058435
+mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
+mas "Microsoft OneDrive", id: 823766827
 mas "Ora", id: 1340501510
 mas "Sequel Ace", id: 1518036000
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
+mas "The Unarchiver", id: 425424353
 mas "WebSocket Client", id: 1399498094
 mas "Xcode", id: 497799835
