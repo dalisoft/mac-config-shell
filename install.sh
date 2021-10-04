@@ -102,6 +102,8 @@ function optimziations_setup {
   sudo -A defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
   killall mds >/dev/null 2>&1
   sudo -A mdutil -a -i off
+  sudo -A mdutil -a -i off /
+  sudo -A mdutil -a -i off /*
 
   ## Disable Siri
   MIN_OS=10.14
