@@ -30,7 +30,6 @@ brew "git-lfs"
 brew "pinentry"
 brew "gnupg"
 brew "go"
-#brew "gradle"
 brew "htop"
 brew "imagemagick"
 brew "llvm"
@@ -90,6 +89,7 @@ cask "imazing"
 cask "krisp"
 cask "macs-fan-control"
 cask "macupdater"
+cask "microsoft-auto-update"
 cask "microsoft-edge"
 cask "miniforge"
 cask "miro"
@@ -105,6 +105,7 @@ cask "sublime-text"
 cask "telegram"
 cask "utm"
 cask "visual-studio-code"
+cask "webstorm"
 mas "Apple Configurator 2", id: 1037126344
 mas "Asphalt 8+", id: 1563005359
 mas "Boop", id: 1518425043
@@ -117,11 +118,11 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
-mas "Microsoft OneDrive", id: 823766827
+mas "OneDrive", id: 823766827
 mas "Ora", id: 1340501510
 mas "Sequel Ace", id: 1518036000
+mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 mas "Treenity", id: 1208520991
-mas "The Unarchiver", id: 425424353
 mas "WebSocket Client", id: 1399498094
 mas "Xcode", id: 497799835
