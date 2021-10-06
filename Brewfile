@@ -26,9 +26,13 @@ brew "exa"
 brew "giflib"
 brew "gobject-introspection"
 brew "jpeg"
+brew "nghttp2"
+brew "unbound"
+brew "srt"
 brew "ffmpeg"
 brew "fish"
 brew "fnm"
+brew "folly"
 brew "git"
 brew "qt@5"
 brew "git-cola"
@@ -48,6 +52,7 @@ brew "mosh"
 brew "nano"
 brew "neofetch"
 brew "neovim"
+brew "node"
 brew "openblas"
 brew "openjdk@11"
 brew "php"
@@ -117,9 +122,11 @@ cask "visual-studio-code"
 #cask "webstorm"
 mas "Apple Configurator 2", id: 1037126344
 mas "Asphalt 8+", id: 1563005359
+mas "Blackmagic RAW Speed Test", id: 1466185689
 mas "Boop", id: 1518425043
 mas "Data Modeler", id: 1575153701
 mas "Developer", id: 640199958
+mas "Disk Speed Test", id: 425264550
 mas "iMovie", id: 408981434
 mas "iPreview", id: 1519213509
 mas "Medis", id: 1579200037
