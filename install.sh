@@ -22,7 +22,7 @@ LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig" ".gnupg/gpg-agent.conf"
 NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "psrecord")
 
-FNM_VERSIONS=("12.22.6" "14.17.6")
+FNM_VERSIONS=("12.22.6" "14.18.0")
 
 #############################
 ### Preparations of steps ###
@@ -256,6 +256,8 @@ function install_fnm_versions {
     else
       fnm install $fnm_nvm
     fi
+    # Set default to 14 for compatibility
+    fnm default 14
   done
 }
 
