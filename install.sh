@@ -171,8 +171,6 @@ function pre_installation {
     fi
     ln -vs "$HOME/Desktop/dotfiles/$link_file" "$HOME/$link_file"
   done
-
-  exit 0
 }
 
 #############################
