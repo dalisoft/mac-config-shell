@@ -16,7 +16,7 @@ MAX_TRIES=5
 
 ENSURE_FOLDERS=(".npm-global" "Desktop/dotfiles/.vim/autoload")
 LINK_FOLDERS=(".nano" ".vim" ".config")
-LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig" ".gnupg/gpg-agent.conf")
+LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
 
 # M1 incompatible npm packages: "bs-platform"
 NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
@@ -161,7 +161,7 @@ function pre_installation {
     if [[ $backup_ask == "Y" ]]; then
       rm -rf "$HOME/$link_folder"
     fi
-    ln -vhs "$HOME/Desktop/dotfiles/$link_folder/" "$HOME/$link_folder"
+    ln -vs "$HOME/Desktop/dotfiles/$link_folder/" "$HOME/$link_folder"
   done
 
   ## Link files
@@ -169,8 +169,10 @@ function pre_installation {
     if [[ $backup_ask == "Y" ]]; then
       rm -rf "$HOME/$link_file"
     fi
-    ln -vh "$HOME/Desktop/dotfiles/$link_file" "$HOME/$link_file"
+    ln -vs "$HOME/Desktop/dotfiles/$link_file" "$HOME/$link_file"
   done
+
+  exit 0
 }
 
 #############################
