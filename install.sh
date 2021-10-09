@@ -225,7 +225,7 @@ function install_pip_packages {
 
   echo "Installing pip packages..."
 
-  INSTALLED_PACKAGES=$(pip list --format json)
+  INSTALLED_PACKAGES=$(python3 -m pip list --format json)
   python3 -m pip install --upgrade pip
   for package in "${PIP_PACKAGES[@]}"; do
     if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
