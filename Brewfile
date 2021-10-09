@@ -21,13 +21,14 @@ brew "cocoapods"
 brew "composer"
 brew "curl"
 brew "deno"
+brew "docker"
+brew "docker-compose"
 brew "dprint"
 brew "exa"
 brew "giflib"
+brew "unbound"
 brew "gobject-introspection"
 brew "jpeg"
-brew "nghttp2"
-brew "unbound"
 brew "srt"
 brew "ffmpeg"
 brew "fish"
@@ -52,6 +53,7 @@ brew "mosh"
 brew "nano"
 brew "neofetch"
 brew "neovim"
+brew "nghttp2"
 brew "node"
 brew "openblas"
 brew "openjdk@11"
@@ -91,7 +93,6 @@ cask "browserstacklocal"
 #cask "coconutbattery"
 cask "cyberduck"
 cask "datagrip"
-cask "docker"
 cask "figma"
 cask "firefox"
 cask "folx"
@@ -124,6 +125,7 @@ mas "Apple Configurator 2", id: 1037126344
 mas "Asphalt 8+", id: 1563005359
 mas "Blackmagic RAW Speed Test", id: 1466185689
 mas "Boop", id: 1518425043
+mas "Cleaner for XCode", id: 1296084683
 mas "Data Modeler", id: 1575153701
 mas "Developer", id: 640199958
 mas "Disk Speed Test", id: 425264550
