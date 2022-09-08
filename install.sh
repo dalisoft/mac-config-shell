@@ -8,21 +8,24 @@ read -p "Enter your password: " PASSWORD
 ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
+MIN_OS=11.6
+BREAKING_OS=12.3
 
 ##############################
 ### Installation variables ###
 ##############################
 MAX_TRIES=5
 
-ENSURE_FOLDERS=(".npm-global" "Desktop/dotfiles/.vim/autoload")
+ENSURE_FOLDERS=(".npm-global/lib" "Desktop/dotfiles/.vim/autoload" ".gnupg")
 LINK_FOLDERS=(".nano" ".vim" ".config")
-LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig")
+LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig" ".hushlogin")
 
 # M1 incompatible npm packages: "bs-platform"
 NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
-PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "psrecord")
+PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "labelImg" "psrecord")
+PIPX_PACKAGES=("osxphotos")
 
-FNM_VERSIONS=("16.12.0")
+FNM_VERSIONS=("16.17.0")
 
 #############################
 ### Preparations of steps ###
@@ -35,6 +38,12 @@ function check_env {
     echo "Hey, welcome! please trust me"
     echo "and enter valid password here"
     echo "I hope you understand me..."
+    exit 1
+  fi
+
+  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
+    echo "Your OS does not meet requirements"
+    echo "Minimum required OS is: v11.6.x"
     exit 1
   fi
 }
@@ -85,19 +94,6 @@ function sudo_access_check {
 function optimziations_setup {
   echo "------"
 
-  echo "Optimizations steps..."
-
-  echo ""
-  ## Disable Spotlight
-  MIN_OS=10.14
-  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
-    sudo -A launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
-  else
-    echo "You running latest *macOS*"
-    echo "You should disable SIP"
-    echo "to disable *Spotlight*"
-  fi
-
   sudo -A mdutil -a -i off
   sudo -A defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
   killall mds >/dev/null 2>&1
@@ -105,21 +101,196 @@ function optimziations_setup {
   sudo -A mdutil -a -i off /
   sudo -A mdutil -a -i off /*
 
-  ## Disable Siri
-  MIN_OS=10.14
-  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
-    sudo -A plutil -replace Disabled -bool true /System/Library/LaunchAgents/com.apple.Siri.agent.plist || echo "Siri cannot be disabled, SIP enabled"
-  else
-    echo "You running latest *macOS*"
-    echo "You should disable SIP"
-    echo "to disable *Siri*"
-  fi
   defaults write com.apple.Siri StatusMenuVisible -bool false
   defaults write com.apple.Siri UserHasDeclinedEnable -bool true
   defaults write com.apple.assistant.support "Assistant Enabled" 0
+}
 
-  ## Disable Software Update
-  sudo -A softwareupdate --schedule off
+function finder_setup {
+  echo "------"
+
+  echo "Configuring Finder..."
+
+  chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library 2>/dev/null
+
+  defaults write com.apple.finder NewWindowTarget -string "PfDe"
+  defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads/"
+
+  defaults write com.apple.finder DownloadsFolderListViewSettingsVersion -bool true
+  defaults write com.apple.finder DownloadsFolderListViewSettingsVersion -int 1
+  defaults write com.apple.finder FXArrangeGroupViewBy -string "Date Modified"
+  defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+  defaults write com.apple.finder FXPreferredGroupBy -string "None"
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+  defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
+  defaults write com.apple.finder FXSidebarUpgradedToTenFourteen -int 1
+  defaults write com.apple.finder FXSidebarUpgradedToTenTen -int 1
+
+  defaults write com.apple.finder FinderSpawnTab -bool false
+  defaults write com.apple.finder NSNavLastUserSetHideExtensionButtonState -bool true
+  defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+  defaults write com.apple.finder ShowRecentTags -bool false
+  defaults write com.apple.finder ShowStatusBar -bool true
+  defaults write com.apple.finder ShowSidebar -bool true
+  defaults write com.apple.finder ShowPathbar -bool true
+  defaults write com.apple.finder SidebarShowingSignedIntoiCloud -bool true
+  defaults write com.apple.finder SidebariCloudDriveSectionDisclosedState -bool true
+
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:calculateAllSizes true" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:calculateAllSizes true" ~/Library/Preferences/com.apple.finder.plist
+
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:textSize 12" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:textSize 12" ~/Library/Preferences/com.apple.finder.plist
+
+  /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:CustomViewStyleVersion 1" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:WindowState:ContainerShowSidebar 1" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:WindowState:ShowTabView 1" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :ComputerViewSettings:WindowState:ShowToolbar 1" ~/Library/Preferences/com.apple.finder.plist
+
+  # Avoid creating .DS_Store files on network or USB volumes
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+  defaults write com.apple.bird optimize-storage -bool false
+  defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+  # Disable the “Are you sure you want to open this application?” dialog
+  defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+  # Disable disk image verification
+  defaults write com.apple.frameworks.diskimages skip-verify -bool true
+  defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+  defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+  # Show item info near icons on the desktop and in other icon views
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+
+  # Show item info to the right of the icons on the desktop
+  /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
+
+  # Enable snap-to-grid for icons on the desktop and in other icon views
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+}
+
+function settings_setup {
+  echo "------"
+
+  echo "Configuring Settings..."
+
+  osascript -e 'tell application "System Preferences" to quit'
+
+  launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
+
+  # General
+  defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
+  defaults write NSGlobalDomain AppleInterfaceStyle -string "Light"
+  defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
+
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+  defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+  # Keyboard
+  defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+  # Sound
+  defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
+
+  # Magic Trackpad config
+  defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+  defaults write NSGlobalDomain com.apple.trackpad.scaling -float 0.875
+
+  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+  defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -bool false
+  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
+
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool false
+
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool false
+
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -bool false
+
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool false
+
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
+
+  # Missiong control
+  defaults write com.apple.dock mru-spaces -bool false
+  defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+  defaults write com.apple.dock showLaunchpadGestureEnabled -bool false
+  defaults write com.apple.dock expose-group-apps -bool true
+  defaults write com.apple.dock expose-group-by-app -bool true
+
+  # Dock
+  defaults write com.apple.dock show-recents -bool false
+
+  # Activity Monitor
+  defaults write com.apple.ActivityMonitor OpenMainWindow -bool false
+  defaults write com.apple.ActivityMonitor SelectedTab -int 1
+  defaults write com.apple.ActivityMonitor ShowCategory -bool false
+  defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+  defaults write com.apple.ActivityMonitor UpdatePeriod -int 1
+
+  # Enery Power
+  sudo pmset -a autorestart 1
+  sudo systemsetup -setrestartfreeze on
+  #sudo pmset -c sleep 0
+  sudo pmset -a displaysleep 15
+  #sudo systemsetup -setcomputersleep Off >/dev/null
+  #sudo pmset -a hibernatemode 0
+
+  # Software Update
+  defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+  defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+  defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+  defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+  defaults write com.apple.commerce AutoUpdate -bool true
+  defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
+  # Privacy
+  defaults write com.apple.screensaver askForPassword -int 1
+  defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+  # Time Machine
+  defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+  sudo -A tmutil stopbackup
+  sudo -A tmutil disable
+  sudo -A tmutil deletelocalsnapshots /
+
+  # Screenshots
+  defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+  defaults write com.apple.screencapture type -string "png"
+  defaults write com.apple.screencapture disable-shadow -bool true
+
+  # Debug & Dev-mode
+  defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+  defaults write com.apple.appstore ShowDebugMenu -bool true
+
+  # Prevent Photos from opening automatically when devices are plugged in
+  defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+  # Disk Utility
+  defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
+
 }
 
 #############################
@@ -150,6 +321,12 @@ function pre_installation {
     echo "Wrong answer, exiting."
     exit 1
   fi
+
+  # For working integration
+  git clone \
+    https://github.com/dalisoft/dotfiles.git \
+    ~/Desktop/dotfiles \
+    --recursive 2>/dev/null
 
   ## Ensure these folders exists
   for ensure_folder in "${ENSURE_FOLDERS[@]}"; do
@@ -236,6 +413,22 @@ function install_pip_packages {
   done
 }
 
+### Installation pipx packages
+function install_pipx_packages {
+  echo "------"
+
+  echo "Installing pipx packages..."
+
+  INSTALLED_PACKAGES=$(pipx list --json)
+  for package in "${PIPX_PACKAGES[@]}"; do
+    if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
+      echo "Already installed pipx package: $package"
+    else
+      pipx install $package
+    fi
+  done
+}
+
 ## Installation Mac App Store apps
 function install_mas_apps {
   echo "------"
@@ -256,8 +449,6 @@ function install_fnm_versions {
     else
       fnm install $fnm_nvm
     fi
-    # Set default to 14 for compatibility
-    fnm default 14
   done
 }
 
@@ -271,19 +462,36 @@ function post_installation {
 
   echo "Post-installation steps..."
 
+  # Mutagen prepare
+  # mutagen daemon register
+  # mutagen daemon start
+
+  # GnuPG configuration
+  rm -rf "$HOME/.gnupg/gpg-agent.conf"
+  echo "pinentry-program $(which pinentry-mac)" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "default-cache-ttl 7200" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "max-cache-ttl 36000" >>"$HOME/.gnupg/gpg-agent.conf"
+
   # neovim plugins installation
   wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa"
 
   # use XCode SDK tools
-  sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
-  sudo -A xcodebuild -license accept
+  # sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
+  # sudo -A xcodebuild -license accept
+
+  if [ $(echo -e $BREAKING_OS"\n"$OS_VER | sort -V | tail -1) == "$BREAKING_OS" ]; then
+    sudo -A ln -s $BREW_PREFIX/python3 $BREW_PREFIX/python
+    echo "Python3 → Python2 patch was applied"
+  fi
 
   # link OpenJDK
   sudo -A ln -sfn $BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk
 
-  # locate `RemMe`
-  sudo -A ln -vh $(pwd)/remme.sh $BREW_PREFIX/bin/remme
+  # locate binaries
+  sudo -A ln -vh $(pwd)/utils/remme.sh $BREW_PREFIX/bin/remme
+  sudo -A ln -vh $(pwd)/utils/git-show-lfs.sh $BREW_PREFIX/bin/git-show-lfs
+  sudo -A ln -vh $(pwd)/utils/mkv2mp4.sh $BREW_PREFIX/bin/mkv2mp4
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
@@ -294,6 +502,13 @@ function post_installation {
   fi
   sudo -A chsh -s $FISH_SHELL_PATH       # change for root
   sudo -A chsh -s $FISH_SHELL_PATH $USER # change for current user
+  echo "shell → fish was set"
+
+  # Terminal set theme
+  defaults write com.apple.Terminal Shell "login -pfql $USER $BREW_PREFIX/bin/fish"
+  defaults write com.apple.Terminal NSNavLastRootDirectory "~/Desktop/dotfiles"
+  defaults write com.apple.Terminal "Default Window Settings" "Transcluent"
+  defaults write com.apple.Terminal "Startup Window Settings" "Transcluent"
 }
 
 #############################
@@ -302,6 +517,8 @@ function post_installation {
 function installation {
   pre_installation
   optimziations_setup
+  finder_setup
+  settings_setup
 
   install_package_manager
   install_system_packages
@@ -309,6 +526,7 @@ function installation {
   install_npm_packages
   install_fnm_versions
   install_pip_packages
+  install_pipx_packages
   install_mas_apps
 
   # Post-installation
@@ -333,6 +551,7 @@ while true; do
   ### Installation done
   if installation; then
     echo "Your apps installed successfully..."
+    echo "Please reboot your device!!!"
     echo "Enjoy..."
     exit 0
   ### Installation failed
