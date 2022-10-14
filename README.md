@@ -23,7 +23,9 @@ No installation required, it's just basic and clean "bash" script
 ## Running
 
 ```bash
-curl https://raw.githubusercontent.com/dalisoft/mac-config-bash/master/install.sh | bash -
+# go-to your desired downloads folder
+wget https://raw.githubusercontent.com/dalisoft/mac-config-bash/master/install.sh -O ./install.sh
+sh install.sh
 > "YOUR_PASSWORD"
 ```
 
