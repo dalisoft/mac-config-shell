@@ -1,6 +1,6 @@
-# mac-config-bash
+# mac-config-shell
 
-<p align='center'>A single "bash" script which configures machine on macOS based on architecture<br/><b>Compatible with Apple Silicon</b></p>
+<p align='center'>A single "shell" script which configures machine on macOS based on architecture<br/><b>Compatible with Apple Silicon</b></p>
 
 ## Note
 
@@ -18,13 +18,13 @@ If you want guide (optional), there exists a file. See [here](./guide.md)
 
 ## Installation
 
-No installation required, it's just basic and clean "bash" script
+No installation required, it's just basic and clean "shell" script
 
 ## Running
 
-```bash
+```shell
 # go-to your desired downloads folder
-wget https://raw.githubusercontent.com/dalisoft/mac-config-bash/master/install.sh -O ./install.sh
+wget https://raw.githubusercontent.com/dalisoft/mac-config-shell/master/install.sh -O ./install.sh
 sh install.sh
 > "YOUR_PASSWORD"
 ```

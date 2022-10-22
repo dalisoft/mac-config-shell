@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -x
 
 # Shows you the largest objects in your repo's pack file.
