@@ -24,7 +24,8 @@ No installation required, it's just basic and clean "shell" script
 
 ```shell
 # go-to your desired downloads folder
-wget https://raw.githubusercontent.com/dalisoft/mac-config-shell/master/install.sh -O ./install.sh
+git clone https://github.com/dalisoft/mac-config-shell.git
+cd mac-config-shell
 sh install.sh
 > "YOUR_PASSWORD"
 ```

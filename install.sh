@@ -183,7 +183,7 @@ function settings_setup {
 
   echo "Configuring Settings..."
 
-  osascript -e 'tell application "System Preferences" to quit'
+  # osascript -e 'tell application "System Preferences" to quit'
 
   launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
 
