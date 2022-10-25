@@ -19,6 +19,7 @@ If you want guide (optional), there exists a file. See [here](./guide.md)
 ## Pre-installation
 
 - Give "Full-disk access" for "Terminal" ([guide](https://www.howtoisolve.com/full-disk-access-full-permissions-on-mac/))
+- Import a "dotfiles" `.terminal` theme into "Terminal"
 - Login into "macOS App Store" and download any app ([guide](https://support.apple.com/en-uz/guide/app-store/fir6253293d/3.0/mac/12.0))
 
 ## Installation
