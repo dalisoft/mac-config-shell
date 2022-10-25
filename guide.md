@@ -43,6 +43,7 @@ These settings may be outdated or changed, so please be careful with settings
 
 1. Select « **Recent Items** » to None (0)
 2. Select theme to « **Auto** »
+3. Uncheck « Close windows when quitting an app »
 
 ### Settings → Keyboard
 
