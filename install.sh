@@ -41,7 +41,7 @@ function check_env {
     exit 1
   fi
 
-  if [ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]; then
+  if [[ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]]; then
     echo "Your OS does not meet requirements"
     echo "Minimum required OS is: v11.6.x"
     exit 1
