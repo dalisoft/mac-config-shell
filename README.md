@@ -1,6 +1,6 @@
 # mac-config-shell
 
-<p align='center'>A single "shell" script which configures machine on macOS based on architecture<br/><b>Compatible with Apple Silicon</b></p>
+<p align='center'>A "shell" script which configures machine on macOS based on architecture<br/><b>Compatible with Apple Silicon</b></p>
 
 ## Note
 
