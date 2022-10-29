@@ -8,6 +8,8 @@
 
 **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
 
+Looking similar for Windows? Look at [here](https://github.com/dalisoft/win-install)
+
 ## Used projects
 
 - <https://github.com/mathiasbynens/dotfiles/blob/main/.macos>
