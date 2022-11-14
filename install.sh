@@ -304,9 +304,9 @@ function check_and_prepare {
 }
 
 ###################################
-### Prepares linking and config ###
+######## Prepares dotfiles ########
 ###################################
-function pre_installation {
+function dotfiles_installation {
   echo "------"
 
   echo "Pre-installation steps..."
@@ -515,7 +515,6 @@ function post_installation {
 ### All installation step ###
 #############################
 function installation {
-  pre_installation
   optimziations_setup
   finder_setup
   settings_setup
@@ -528,6 +527,9 @@ function installation {
   install_pip_packages
   install_pipx_packages
   install_mas_apps
+
+  # dotfiles installation
+  dotfiles_installation
 
   # Post-installation
   post_installation
