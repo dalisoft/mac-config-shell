@@ -358,13 +358,6 @@ function dotfiles_installation {
 function install_package_manager {
   echo "------"
 
-  # XCode requirements
-  if sudo -A xcode-select --version >>/dev/null; then
-    echo "XCode is already installed! Continue process..."
-  else
-    sudo -A xcode-select --install
-  fi
-
   # Install Homebrew
   if brew --version >>/dev/null; then
     echo "Homebrew is already installed! Continue process..."
