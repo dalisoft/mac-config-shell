@@ -5,6 +5,7 @@ set -e
 ### Environment variables ###
 #############################
 read -p "Enter your password: " PASSWORD
+read -p "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
 ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
@@ -313,7 +314,6 @@ function dotfiles_installation {
 
   echo ""
   echo "This step removes all of your previous config"
-  read -p "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
   backup_ask=${backup_ask:-Y}
 
   if [[ $backup_ask != "Y" && $backup_ask != "N" ]]; then
