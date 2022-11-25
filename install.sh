@@ -47,6 +47,11 @@ function check_env {
     echo "Minimum required OS is: v11.6.x"
     exit 1
   fi
+
+  if [[ $(ls ~/* 1>/dev/null) != "" ]]; then
+    echo "You do not have permission, please give full-disk access"
+    exit 1
+  fi
 }
 ### Configre SUDO
 ### Askpass file
@@ -310,10 +315,10 @@ function check_and_prepare {
 function dotfiles_installation {
   echo "------"
 
-  echo "Pre-installation steps..."
+  echo "dotfiles-installation steps..."
 
   echo ""
-  echo "This step removes all of your previous config"
+  echo "This step may remove all of your previous config"
   backup_ask=${backup_ask:-Y}
 
   if [[ $backup_ask != "Y" && $backup_ask != "N" ]]; then
@@ -359,7 +364,7 @@ function install_package_manager {
   echo "------"
 
   # Install Homebrew
-  if brew --version >>/dev/null; then
+  if brew --version >/dev/null; then
     echo "Homebrew is already installed! Continue process..."
   else
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash -
