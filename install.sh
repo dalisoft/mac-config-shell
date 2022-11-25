@@ -475,8 +475,8 @@ function post_installation {
   nvim -c "PlugInstall" -c "qa"
 
   # use XCode SDK tools
-  # sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
-  # sudo -A xcodebuild -license accept
+  sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
+  sudo -A xcodebuild -license accept
 
   if [ $(echo -e $BREAKING_OS"\n"$OS_VER | sort -V | tail -1) == "$BREAKING_OS" ]; then
     sudo -A ln -s $BREW_PREFIX/python3 $BREW_PREFIX/python
