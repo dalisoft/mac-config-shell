@@ -87,6 +87,10 @@ These settings may be outdated or changed, so please be careful with settings
 
 1. Enable « **Firewall** »
 
+### Settings → Siri & Spotlight
+
+1. Uncheck « **Siri Suggestions** »
+
 ### Settings → Internet Accounts
 
 1. Add « **Google Account** »
