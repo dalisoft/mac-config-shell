@@ -66,7 +66,7 @@ function configure_askpass {
 function configure_env {
   export NPM_CONFIG_PREFIX="~/.npm-global"
   export SUDO_ASKPASS=$(pwd)/askpass.sh
-  export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:$PATH"
+  export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
 }
 ### Check for SUDO
 ### access check to
