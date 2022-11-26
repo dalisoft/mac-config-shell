@@ -520,14 +520,14 @@ function installation {
   install_package_manager
   install_system_packages
 
+  # dotfiles installation
+  dotfiles_installation
+
   install_npm_packages
   install_fnm_versions
   install_pip_packages
   install_pipx_packages
   install_mas_apps
-
-  # dotfiles installation
-  dotfiles_installation
 
   # Post-installation
   post_installation
