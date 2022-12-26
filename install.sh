@@ -485,6 +485,7 @@ function post_installation {
 
   # link OpenJDK
   sudo -A ln -sfn $BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk
+  echo "OpenJDK patch was applied"
 
   # locate binaries
   sudo -A ln -vh $(pwd)/utils/remme.sh $BREW_PREFIX/bin/remme
