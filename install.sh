@@ -467,8 +467,10 @@ function post_installation {
   # GnuPG configuration
   rm -rf "$HOME/.gnupg/gpg-agent.conf"
   echo "pinentry-program $(which pinentry-mac)" >>"$HOME/.gnupg/gpg-agent.conf"
-  echo "default-cache-ttl 86400" >>"$HOME/.gnupg/gpg-agent.conf"
-  echo "max-cache-ttl 432000" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "default-cache-ttl 3600" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "max-cache-ttl 14400" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "enable-ssh-support" >>"$HOME/.gnupg/gpg-agent.conf"
+  echo "extra-socket $HOME/.gnupg/S.gpg-agent.extra" >>"$HOME/.gnupg/gpg-agent.conf"
 
   # neovim plugins installation
   wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
