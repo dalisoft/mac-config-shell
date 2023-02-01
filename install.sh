@@ -376,6 +376,7 @@ function install_system_packages {
 
   # Installing bundle
   brew bundle --no-lock --verbose
+  brew install --cask casks/*.rb
 }
 
 ### Installation npm packages
