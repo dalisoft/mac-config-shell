@@ -485,7 +485,7 @@ function post_installation {
   sudo -A xcodebuild -license accept
 
   if [ $(echo -e $BREAKING_OS"\n"$OS_VER | sort -V | tail -1) == "$BREAKING_OS" ]; then
-    sudo -A ln -s $BREW_PREFIX/python3 $BREW_PREFIX/python
+    sudo -A ln -s $BREW_PREFIX/bin/python3 $BREW_PREFIX/bin/python
     echo "Python3 → Python2 patch was applied"
   fi
 
