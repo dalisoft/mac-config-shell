@@ -2,12 +2,6 @@ cask "qbittorrent" do
   version "4.3.9"
   sha256 "c43323a625a937383da68e50a99d823d56e6843580dc8550dd4942683467c3ed"
 
-  livecheck do
-    skip "Local version"
-  end
-
-  auto_updates true
-
   url "https://downloads.sourceforge.net/qbittorrent/qbittorrent-mac/qbittorrent-#{version}/qbittorrent-#{version}.dmg",
       verified: "sourceforge.net/qbittorrent/"
   name "qBittorrent"

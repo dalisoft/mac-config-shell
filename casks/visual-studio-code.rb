@@ -14,12 +14,6 @@ cask "visual-studio-code" do
   desc "Open-source code editor"
   homepage "https://code.visualstudio.com/"
 
-  livecheck do
-    skip "Local version"
-  end
-
-  auto_updates true
-
   app "Visual Studio Code.app"
   binary "#{appdir}/Visual Studio Code.app/Contents/Resources/app/bin/code"
 
