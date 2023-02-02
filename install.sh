@@ -26,7 +26,7 @@ NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" 
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "labelImg" "psrecord")
 PIPX_PACKAGES=("osxphotos")
 
-FNM_VERSIONS=("16.18.1" "18.12.1")
+FNM_VERSIONS=("16.19.0" "18.14.0")
 
 #############################
 ### Preparations of steps ###
