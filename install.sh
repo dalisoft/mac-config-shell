@@ -10,7 +10,6 @@ ARCH=$(uname -m)
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MIN_OS=11.6
-BREAKING_OS=12.3
 
 ##############################
 ### Installation variables ###
@@ -484,7 +483,7 @@ function post_installation {
   sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
   sudo -A xcodebuild -license accept
 
-  if [ $(echo -e $BREAKING_OS"\n"$OS_VER | sort -V | tail -1) == "$BREAKING_OS" ]; then
+  if [[ ! -f $BREW_PREFIX/bin/python && -f $BREW_PREFIX/bin/python3 ]]; then
     sudo -A ln -s $BREW_PREFIX/bin/python3 $BREW_PREFIX/bin/python
     echo "Python3 → Python2 patch was applied"
   fi
