@@ -1,7 +1,7 @@
 # mac-config-shell
 
 <p align='center'>A "shell" script which configures machine on macOS<br/><b>Compatible with Apple Silicon</b></p>
-<p align='center'>Supports only Catalina(legacy, not fully), macOS Big Sur, Monterey and Ventura</p>
+<p align='center'>Supports only macOS Big Sur 11.6+, Monterey and Ventura</p>
 
 ## Note
 
