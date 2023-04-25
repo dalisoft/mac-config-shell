@@ -5,6 +5,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "lapce/lapce"
 tap "mongodb/brew"
 #tap "mutagen-io/mutagen"
 tap "ngrok/ngrok"
@@ -100,8 +101,8 @@ brew "yt-dlp/taps/yt-dlp"
 cask "1password"
 cask "adguard"
 cask "adguard-vpn"
-cask "affinity-designer"
-cask "affinity-photo"
+#cask "affinity-designer"
+#cask "affinity-photo"
 cask "aldente"
 cask "alt-tab"
 cask "altair-graphql-client"
@@ -109,7 +110,7 @@ cask "altair-graphql-client"
 cask "android-file-transfer"
 cask "android-studio"
 cask "anydesk"
-cask "app-cleaner"
+cask "appcleaner"
 cask "arctype"
 #cask "arq"
 #cask "arq-cloud-backup"
@@ -122,12 +123,15 @@ cask "browserstacklocal"
 cask "coconutbattery"
 cask "cyberduck"
 cask "datagrip"
+cask "diffusionbee"
 cask "docker"
 #cask "fedora-media-writer"
 cask "figma"
 cask "firefox"
+cask "fleet"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
+cask "font-roboto"
 cask "framer"
 #cask "eloston-chromium"
 cask "fsnotes"
@@ -136,42 +140,42 @@ cask "imazing"
 cask "kap"
 #cask "knockknock"
 cask "krisp"
+cask "lapce-nightly"
 cask "macs-fan-control"
 cask "macupdater"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
-cask "microsoft-excel"
-#cask "microsoft-outlook"
-cask "microsoft-powerpoint"
-cask "microsoft-teams"
-cask "microsoft-word"
 cask "miniforge"
 cask "miro"
-cask "monitorcontrol"
-cask "mounty"
+#cask "monitorcontrol"
+#cask "mounty"
 cask "netnewswire"
 cask "ngrok"
 cask "notion"
 cask "numi"
 #cask "outline-manager"
-#cask "paragon-ntfs"
-#cask "parallels"
+cask "obsidian"
+cask "onlyoffice"
+cask "paragon-ntfs"
+cask "parallels"
 cask "postgres-unofficial"
 cask "postico"
 cask "postman"
+cask "postman-agent"
 #cask "proxyman"
 #cask "pycharm"
 #cask "qbittorrent"
 cask "raindropio"
 cask "rapidapi"
 #cask "raspberry-pi-imager"
+cask "raycast"
 cask "rectangle"
 cask "redisinsight"
-cask "rsyncosx"
 #cask "sensei"
 #cask "slack"
 cask "soulver"
 cask "spotify"
+cask "sublime-text"
 cask "tableplus"
 #cask "teamviewer"
 cask "tailscale"
@@ -181,24 +185,29 @@ cask "telegram-desktop"
 cask "utm"
 #cask "visual-studio-code"
 cask "visual-studio-code-insiders"
-#cask "vmware-fusion"
+cask "vmware-fusion"
 cask "webstorm"
 #cask "wifi-explorer-pro"
-cask "zerotier-one"
+#cask "zerotier-one"
 cask "webstorm"
 cask "zoom"
+cask "zed"
+mas "1Password for Safari", id: 1569813296
 mas "Apple Configurator", id: 1037126344
 mas "Baking Soda", id: 1601151613
 mas "Blackmagic RAW Speed Test", id: 1466185689
+mas "CapCut", id: 1500855883
 #mas "Cleaner for Xcode", id: 1296084683
 #mas "Codye", id: 1516894961
 mas "Code of War", id: 1310262344
 mas "CompareMerge2", id: 1459748650
 mas "Core Tunnel", id: 1354318707
-mas "Craft", id: 1487937127
+#mas "Craft", id: 1487937127
 mas "Data Modeler", id: 1575153701
 #mas "Developer", id: 640199958
+mas "DaVinci Resolve", id: 571213070
 mas "Disk Speed Test", id: 425264550
+mas "Hex Fiend", id: 1342896380
 #mas "Home Design 3D", id: 1342163391
 #mas "iMovie", id: 408981434
 mas "Infuse", id: 1136220934
@@ -215,7 +224,7 @@ mas "Medis", id: 1579200037
 mas "Pixelmator Pro", id: 1289583905
 #mas "Planner 5D", id: 1310584536
 mas "RectLabel", id: 1490990105
-#mas "Save to Raindrop.io", id: 1549370672
+mas "Save to Raindrop.io", id: 1549370672
 #mas "Sculptor", id: 1493318997
 mas "Sequel Ace", id: 1518036000
 mas "The Unarchiver", id: 425424353
