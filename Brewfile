@@ -15,7 +15,6 @@ brew "age"
 brew "ansible"
 brew "giflib"
 brew "jpeg"
-brew "libpng"
 brew "aria2"
 brew "bat"
 brew "bfg"
@@ -138,6 +137,7 @@ cask "docker"
 cask "figma"
 cask "firefox"
 cask "fleet"
+cask "font-fira-code"
 cask "font-jetbrains-mono"
 cask "framer"
 #cask "eloston-chromium"
@@ -148,6 +148,7 @@ cask "kap"
 #cask "knockknock"
 #cask "krisp"
 cask "lapce-nightly"
+cask "macfuse"
 cask "macs-fan-control"
 cask "macupdater"
 cask "microsoft-auto-update"
@@ -164,11 +165,9 @@ cask "numi"
 cask "obsidian"
 cask "onlyoffice"
 cask "paragon-ntfs"
-cask "parallels"
 cask "postgres-unofficial"
 cask "postico"
 cask "postman"
-cask "postman-agent"
 #cask "proxyman"
 #cask "pycharm"
 #cask "qbittorrent"
@@ -188,7 +187,6 @@ cask "tableplus"
 cask "tailscale"
 #cask "taskexplorer"
 cask "telegram-desktop"
-#cask "tuxera-ntfs"
 cask "utm"
 cask "veracrypt"
 cask "virtualbox-beta"
@@ -198,6 +196,7 @@ cask "vmware-fusion"
 cask "webstorm"
 #cask "wifi-explorer-pro"
 #cask "zerotier-one"
+cask "vnc-viewer"
 cask "webstorm"
 #cask "zoom"
 cask "zed"
@@ -215,6 +214,7 @@ mas "Core Tunnel", id: 1354318707
 mas "Data Modeler", id: 1575153701
 #mas "Developer", id: 640199958
 mas "DaVinci Resolve", id: 571213070
+mas "Disk Decipher", id: 516538625
 mas "Disk Speed Test", id: 425264550
 mas "Hex Fiend", id: 1342896380
 #mas "Home Design 3D", id: 1342163391
@@ -230,6 +230,7 @@ mas "Medis", id: 1579200037
 #mas "Octotree", id: 1457450145
 #mas "Ora", id: 1340501510
 #mas "Outline", id: 1356178125
+mas "Noted", id: 1446580517
 mas "Pixelmator Pro", id: 1289583905
 #mas "Planner 5D", id: 1310584536
 mas "RectLabel", id: 1490990105
@@ -239,7 +240,6 @@ mas "Sequel Ace", id: 1518036000
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 #mas "Transporter", id: 1450874784
-#mas "Treenity", id: 1208520991
 mas "Vinegar", id: 1591303229
 mas "VN", id: 1494451650
 #mas "Wappalyzer", id: 1520333300
