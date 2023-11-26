@@ -188,9 +188,7 @@ function settings_setup {
 
   echo "Configuring Settings..."
 
-  # osascript -e 'tell application "System Preferences" to quit'
-
-  launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
+  osascript -e 'tell application "System Preferences" to quit'
 
   # General
   defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
@@ -253,14 +251,6 @@ function settings_setup {
   defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
   defaults write com.apple.ActivityMonitor UpdatePeriod -int 1
 
-  # Enery Power
-  sudo pmset -a autorestart 1
-  sudo systemsetup -setrestartfreeze on
-  #sudo pmset -c sleep 0
-  sudo pmset -a displaysleep 15
-  #sudo systemsetup -setcomputersleep Off >/dev/null
-  #sudo pmset -a hibernatemode 0
-
   # Software Update
   defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
@@ -276,10 +266,6 @@ function settings_setup {
 
   # Time Machine
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-  sudo -A tmutil stopbackup
-  sudo -A tmutil disable
-  sudo -A tmutil deletelocalsnapshots /
 
   # Screenshots
   defaults write com.apple.screencapture location -string "${HOME}/Desktop"
