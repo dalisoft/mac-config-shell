@@ -505,7 +505,7 @@ function post_installation {
 ### All installation step ###
 #############################
 function installation {
-  optimziations_setup
+  # optimziations_setup
   finder_setup
   settings_setup
 
