@@ -53,6 +53,7 @@ brew "imagemagick"
 brew "iperf"
 brew "iperf3"
 brew "pango"
+brew "jpeg"
 brew "less"
 brew "libffi"
 brew "librsvg"
@@ -116,7 +117,6 @@ cask "altair-graphql-client"
 #cask "altserver"
 cask "android-file-transfer"
 cask "android-studio"
-cask "anydesk"
 cask "appcleaner"
 cask "arctype"
 #cask "arq"
@@ -209,7 +209,7 @@ mas "Blackmagic RAW Speed Test", id: 1466185689
 mas "CapCut", id: 1500855883
 #mas "Cleaner for Xcode", id: 1296084683
 #mas "Codye", id: 1516894961
-mas "Code of War", id: 1310262344
+mas "CodeOfWar", id: 1310262344
 mas "CompareMerge2", id: 1459748650
 mas "Core Tunnel", id: 1354318707
 #mas "Craft", id: 1487937127
@@ -226,6 +226,7 @@ mas "iPreview", id: 1519213509
 #mas "Live Home 3D", id: 1066144116
 #mas "Medis 1", id: 1063631769
 mas "Medis", id: 1579200037
+mas "Microsoft Remote Desktop", id: 1295203466
 #mas "Mockup", id: 1527554407
 #mas "MQTT Explorer", id: 1455214828
 #mas "Notability", id: 360593530
@@ -233,6 +234,7 @@ mas "Medis", id: 1579200037
 #mas "Ora", id: 1340501510
 #mas "Outline", id: 1356178125
 mas "Noted", id: 1446580517
+mas "Photomator", id: 1444636541
 mas "Pixelmator Pro", id: 1289583905
 #mas "Planner 5D", id: 1310584536
 mas "RectLabel", id: 1490990105
