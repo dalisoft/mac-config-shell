@@ -237,7 +237,7 @@ function settings_setup {
   # Missiong control
   defaults write com.apple.dock mru-spaces -bool false
   defaults write com.apple.dock showAppExposeGestureEnabled -bool true
-  defaults write com.apple.dock showLaunchpadGestureEnabled -bool false
+  defaults write com.apple.dock showLaunchpadGestureEnabled -bool true
   defaults write com.apple.dock expose-group-apps -bool true
   defaults write com.apple.dock expose-group-by-app -bool true
 
