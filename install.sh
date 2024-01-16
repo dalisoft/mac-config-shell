@@ -1,12 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -e
 
 #############################
 ### Environment variables ###
 #############################
-read -p "Enter your password: " PASSWORD
-read -p "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
-ARCH=$(uname -m)
+read -rp "Enter your password: " PASSWORD
+read -rp "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MIN_OS=11.6
@@ -25,7 +24,7 @@ NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" 
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "labelImg" "psrecord")
 PIPX_PACKAGES=("osxphotos")
 
-FNM_VERSIONS=("18.19.0" "20.10.0")
+FNM_VERSIONS=("18.19.0" "20.11.0")
 
 #############################
 ### Preparations of steps ###
@@ -41,7 +40,7 @@ function check_env {
     exit 1
   fi
 
-  if [[ $(echo -e $MIN_OS"\n"$OS_VER | sort -V | tail -1) == "$MIN_OS" ]]; then
+  if [[ $(echo -e $MIN_OS"\n$OS_VER" | sort -V | tail -1) == "$MIN_OS" ]]; then
     echo "Your OS does not meet requirements"
     echo "Minimum required OS is: v11.6.x"
     exit 1
@@ -63,8 +62,8 @@ function configure_askpass {
 ### Configre ENV
 ### for future actions
 function configure_env {
-  export NPM_CONFIG_PREFIX="~/.npm-global"
-  export SUDO_ASKPASS=$(pwd)/askpass.sh
+  export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+  export SUDO_ASKPASS="$PWD/askpass.sh"
   export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
 }
 ### Check for SUDO
@@ -375,7 +374,7 @@ function install_npm_packages {
     if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
       echo "Already installed npm package: $package"
     else
-      npm install --global $package
+      npm install --global "$package"
     fi
   done
 }
@@ -392,7 +391,7 @@ function install_pip_packages {
     if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
       echo "Already installed pip package: $package"
     else
-      python3 -m pip install $package
+      python3 -m pip install "$package"
     fi
   done
 }
@@ -408,7 +407,7 @@ function install_pipx_packages {
     if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
       echo "Already installed pipx package: $package"
     else
-      pipx install $package
+      pipx install "$package"
     fi
   done
 }
@@ -431,7 +430,7 @@ function install_fnm_versions {
     if echo "$INSTALLED_VERSION" | grep "* v$fnm_nvm" >>/dev/null; then
       echo "Already installed fnm version: $fnm_nvm"
     else
-      fnm install $fnm_nvm
+      fnm install "$fnm_nvm"
     fi
   done
 }
@@ -457,8 +456,8 @@ function post_installation {
   echo "max-cache-ttl 14400" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "enable-ssh-support" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "extra-socket $HOME/.gnupg/S.gpg-agent.extra" >>"$HOME/.gnupg/gpg-agent.conf"
-  chown -R $USER $HOME/.gnupg
-  chmod 700 $HOME/.gnupg
+  chown -R "$USER" "$HOME/.gnupg"
+  chmod 700 "$HOME/.gnupg"
   chmod 600 "$HOME/.gnupg/gpg-agent.conf"
 
   # neovim plugins installation
@@ -470,33 +469,33 @@ function post_installation {
   sudo -A xcodebuild -license accept
 
   if [[ ! -f $BREW_PREFIX/bin/python && -f $BREW_PREFIX/bin/python3 ]]; then
-    sudo -A ln -s $BREW_PREFIX/bin/python3 $BREW_PREFIX/bin/python
+    sudo -A ln -s "$BREW_PREFIX/bin/python3" "$BREW_PREFIX/bin/python"
     echo "Python3 → Python2 patch was applied"
   fi
 
   # link OpenJDK
-  sudo -A ln -sfn $BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk
+  sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk"
   echo "OpenJDK patch was applied"
 
   # locate binaries
-  sudo -A ln -vh $(pwd)/utils/remme.sh $BREW_PREFIX/bin/remme
-  sudo -A ln -vh $(pwd)/utils/git-show-lfs.sh $BREW_PREFIX/bin/git-show-lfs
-  sudo -A ln -vh $(pwd)/utils/mkv2mp4.sh $BREW_PREFIX/bin/mkv2mp4
+  sudo -A ln -vh "$PWD/utils/remme.sh" "$BREW_PREFIX/bin/remme"
+  sudo -A ln -vh "$PWD/utils/git-show-lfs.sh" "$BREW_PREFIX/bin/git-show-lfs"
+  sudo -A ln -vh "$PWD/utils/mkv2mp4.sh" "$BREW_PREFIX/bin/mkv2mp4"
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
   if grep -o "$FISH_SHELL_PATH" /etc/shells >>/dev/null; then
     echo "Already set fish as list of shells"
   else
-    echo $FISH_SHELL_PATH | sudo -A tee -a /etc/shells
+    echo "$FISH_SHELL_PATH" | sudo -A tee -a /etc/shells
   fi
-  sudo -A chsh -s $FISH_SHELL_PATH       # change for root
-  sudo -A chsh -s $FISH_SHELL_PATH $USER # change for current user
+  sudo -A chsh -s "$FISH_SHELL_PATH"         # change for root
+  sudo -A chsh -s "$FISH_SHELL_PATH" "$USER" # change for current user
   echo "shell → fish was set"
 
   # Terminal set theme
   defaults write com.apple.Terminal Shell "login -pfql $USER $BREW_PREFIX/bin/fish"
-  defaults write com.apple.Terminal NSNavLastRootDirectory "~/Desktop/dotfiles"
+  defaults write com.apple.Terminal NSNavLastRootDirectory "$HOME/Desktop/dotfiles"
   defaults write com.apple.Terminal "Default Window Settings" "Transcluent"
   defaults write com.apple.Terminal "Startup Window Settings" "Transcluent"
 }
