@@ -210,6 +210,9 @@ function settings_setup {
   defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
   defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+  # Keyboard (UI tooltip)
+  sudo -A defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+
   # Sound
   defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
 
