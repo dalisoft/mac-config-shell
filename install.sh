@@ -24,7 +24,7 @@ NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" 
 PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "labelImg" "psrecord")
 PIPX_PACKAGES=("osxphotos")
 
-FNM_VERSIONS=("18.19.1" "20.11.1")
+FNM_VERSIONS=("18.20.2" "20.12.2")
 
 #############################
 ### Preparations of steps ###
@@ -480,6 +480,9 @@ function post_installation {
     sudo -A ln -s "$BREW_PREFIX/bin/python3" "$BREW_PREFIX/bin/python"
     echo "Python3 → Python2 patch was applied"
   fi
+
+  # Rustup toolchain
+  rustup-init --profile complete --default-toolchain stable -y
 
   # link OpenJDK
   sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk"
