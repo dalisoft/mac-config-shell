@@ -4,11 +4,11 @@ set -eu
 #############################
 ### Environment variables ###
 #############################
-printf "%s" "Enter your password: "
+printf "%b\n" "Enter your password: "
 stty -echo
 read -r PASSWORD
 stty echo
-printf "%s" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
+printf "%s\n" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
 read -r backup_ask
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
