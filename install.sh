@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
-set -e
+#!/bin/sh
+set -eu
 
 #############################
 ### Environment variables ###
 #############################
-read -rp "Enter your password: " PASSWORD
-read -rp "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
+read -r "Enter your password: " PASSWORD
+read -r "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MIN_OS=11.6
@@ -15,16 +15,16 @@ MIN_OS=11.6
 ##############################
 MAX_TRIES=5
 
-ENSURE_FOLDERS=(".npm-global/lib" "Desktop/dotfiles/.vim/autoload" ".gnupg")
-LINK_FOLDERS=(".nano" ".vim" ".config")
-LINK_FILES=(".nanorc" ".vimrc" ".tmux.conf" ".gitconfig" ".hushlogin")
+ENSURE_FOLDERS=".npm-global/lib Desktop/dotfiles/.vim/autoload .gnupg"
+LINK_FOLDERS=".nano .vim .config"
+LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 # M1 incompatible npm packages: "bs-platform"
-NPM_PACKAGES=("npm" "0x" "cordova" "esy" "flamebearer" "http-server" "node-gyp" "nodemon" "npm-check-updates" "typesync")
-PIP_PACKAGES=("virtualenv" "jupyterlab" "notebook" "labelme" "labelImg" "psrecord")
-PIPX_PACKAGES=("osxphotos")
+NPM_PACKAGES="npm 0x cordova esy flamebearer http-server node-gyp nodemon npm-check-updates typesync"
+PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord"
+PIPX_PACKAGES="osxphotos"
 
-FNM_VERSIONS=("18.20.2" "20.12.2")
+FNM_VERSIONS="18.20.2 20.12.2"
 
 #############################
 ### Preparations of steps ###
@@ -32,36 +32,37 @@ FNM_VERSIONS=("18.20.2" "20.12.2")
 
 ### Check and prompts ENV
 ### variables
-function check_env {
-  if [[ "$PASSWORD" == "" ]]; then
+check_env() {
+  if [ -z "$PASSWORD" ]; then
     echo "Hey, welcome! please trust me"
     echo "and enter valid password here"
     echo "I hope you understand me..."
     exit 1
   fi
 
-  if [[ $(echo -e $MIN_OS"\n$OS_VER" | sort -V | tail -1) == "$MIN_OS" ]]; then
+  if [ "$(print "%b" $MIN_OS"\n$OS_VER" | sort -V | tail -1)" = "$MIN_OS" ]; then
     echo "Your OS does not meet requirements"
     echo "Minimum required OS is: v11.6.x"
     exit 1
   fi
 
-  if [[ $(ls ~/* 1>/dev/null) != "" ]]; then
+  if ls ~/* 1>/dev/null; then
     echo "You do not have permission, please give full-disk access"
     exit 1
   fi
 }
 ### Configre SUDO
 ### Askpass file
-function configure_askpass {
+configure_askpass() {
   rm -rf askpass.sh
   echo "#!/bin/sh" >>./askpass.sh
   echo "echo \"$PASSWORD\"" >>./askpass.sh
   chmod 700 askpass.sh
 }
+
 ### Configre ENV
 ### for future actions
-function configure_env {
+configure_env() {
   export NPM_CONFIG_PREFIX="$HOME/.npm-global"
   export SUDO_ASKPASS="$PWD/askpass.sh"
   export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
@@ -72,11 +73,12 @@ function configure_env {
   export HOMEBREW_NO_INSTALL_FROM_API=1 # Use Git for immediate changes
   export HOMEBREW_NO_ENV_HINTS=1        # Hide hints for cleaner logs
 }
+
 ### Check for SUDO
 ### access check to
 ### validate
-function sudo_access_check {
-  if [[ "$EUID" = 0 ]]; then
+sudo_access_check() {
+  if [ "$(id -u)" = 0 ]; then
     echo "Hey, welcome! I got (sudo) access"
     echo "Thank you for your trust, so"
     echo "i will continue my processes"
@@ -101,7 +103,7 @@ function sudo_access_check {
 #############################
 # See link for more info
 # https://blog.macstadium.com/blog/simple-optimizations-for-macos-and-ios-build-agents
-function optimziations_setup {
+optimziations_setup() {
   echo "------"
 
   sudo -A mdutil -a -i off
@@ -116,7 +118,7 @@ function optimziations_setup {
   defaults write com.apple.assistant.support "Assistant Enabled" 0
 }
 
-function finder_setup {
+finder_setup() {
   echo "------"
 
   echo "Configuring Finder..."
@@ -188,7 +190,7 @@ function finder_setup {
   /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 }
 
-function settings_setup {
+settings_setup() {
   echo "------"
 
   echo "Configuring Settings..."
@@ -295,7 +297,7 @@ function settings_setup {
 #############################
 ### Run preparation steps ###
 #############################
-function check_and_prepare {
+check_and_prepare() {
   check_env
   configure_askpass
   configure_env
@@ -305,7 +307,7 @@ function check_and_prepare {
 ###################################
 ######## Prepares dotfiles ########
 ###################################
-function dotfiles_installation {
+dotfiles_installation() {
   echo "------"
 
   echo "dotfiles-installation steps..."
@@ -314,7 +316,7 @@ function dotfiles_installation {
   echo "This step may remove all of your previous config"
   backup_ask=${backup_ask:-Y}
 
-  if [[ $backup_ask != "Y" && $backup_ask != "N" ]]; then
+  if [ "$backup_ask" != "Y" ] && [ "$backup_ask" != "N" ]; then
     echo "Please type *Y* or *N* !"
     echo "Wrong answer, exiting."
     exit 1
@@ -327,22 +329,22 @@ function dotfiles_installation {
     --recursive 2>/dev/null
 
   ## Ensure these folders exists
-  for ensure_folder in "${ENSURE_FOLDERS[@]}"; do
+  for ensure_folder in ${ENSURE_FOLDERS}; do
     mkdir -p "$HOME/$ensure_folder"
   done
 
   ## Link folders
-  for link_folder in "${LINK_FOLDERS[@]}"; do
-    if [[ $backup_ask == "Y" ]]; then
-      rm -rf "$HOME/$link_folder"
+  for link_folder in ${LINK_FOLDERS}; do
+    if [ "$backup_ask" = "Y" ]; then
+      rm -rf "${HOME}/${link_folder:?}"
     fi
     ln -vs "$HOME/Desktop/dotfiles/$link_folder/" "$HOME/$link_folder"
   done
 
   ## Link files
-  for link_file in "${LINK_FILES[@]}"; do
-    if [[ $backup_ask == "Y" ]]; then
-      rm -rf "$HOME/$link_file"
+  for link_file in ${LINK_FILES}; do
+    if [ "$backup_ask" = "Y" ]; then
+      rm -rf "${HOME}/${link_file:?}"
     fi
     ln -vs "$HOME/Desktop/dotfiles/$link_file" "$HOME/$link_file"
   done
@@ -353,7 +355,7 @@ function dotfiles_installation {
 #############################
 
 ### Installing package manager
-function install_package_manager {
+install_package_manager() {
   echo "------"
 
   # Install Homebrew
@@ -363,8 +365,9 @@ function install_package_manager {
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash -
   fi
 }
+
 ### Installing system packages
-function install_system_packages {
+install_system_packages() {
   echo "------"
 
   # Installing bundle
@@ -372,14 +375,14 @@ function install_system_packages {
 }
 
 ### Installation npm packages
-function install_npm_packages {
+install_npm_packages() {
   echo "------"
 
   echo "Installing npm packages..."
 
   INSTALLED_PACKAGES=$(npm list --global --depth=0 --json)
-  for package in "${NPM_PACKAGES[@]}"; do
-    if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
+  for package in ${NPM_PACKAGES}; do
+    if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
       echo "Already installed npm package: $package"
     else
       npm install --global "$package"
@@ -388,15 +391,15 @@ function install_npm_packages {
 }
 
 ### Installation pip packages
-function install_pip_packages {
+install_pip_packages() {
   echo "------"
 
   echo "Installing pip packages..."
 
   INSTALLED_PACKAGES=$(python3 -m pip list --format json)
   python3 -m pip install --upgrade pip
-  for package in "${PIP_PACKAGES[@]}"; do
-    if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
+  for package in ${PIP_PACKAGES}; do
+    if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
       echo "Already installed pip package: $package"
     else
       python3 -m pip install "$package"
@@ -405,14 +408,14 @@ function install_pip_packages {
 }
 
 ### Installation pipx packages
-function install_pipx_packages {
+install_pipx_packages() {
   echo "------"
 
   echo "Installing pipx packages..."
 
   INSTALLED_PACKAGES=$(pipx list --json)
-  for package in "${PIPX_PACKAGES[@]}"; do
-    if [[ $(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"") == "\"$package\"" ]]; then
+  for package in ${PIPX_PACKAGES}; do
+    if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
       echo "Already installed pipx package: $package"
     else
       pipx install "$package"
@@ -421,21 +424,21 @@ function install_pipx_packages {
 }
 
 ## Installation Mac App Store apps
-function install_mas_apps {
+install_mas_apps() {
   echo "------"
 
   echo "Installed already via Homebrew"
 }
 
 ## Installation Node.js versions
-function install_fnm_versions {
+install_fnm_versions() {
   echo "------"
 
   echo "Installing fnm versions..."
 
   INSTALLED_VERSION=$(fnm ls)
-  for fnm_nvm in "${FNM_VERSIONS[@]}"; do
-    if echo "$INSTALLED_VERSION" | grep "* v$fnm_nvm" >>/dev/null; then
+  for fnm_nvm in ${FNM_VERSIONS}; do
+    if echo "$INSTALLED_VERSION" | grep "\* v${fnm_nvm}" >>/dev/null; then
       echo "Already installed fnm version: $fnm_nvm"
     else
       fnm install "$fnm_nvm"
@@ -445,7 +448,7 @@ function install_fnm_versions {
 
 ### POST-installation
 ### steps for configure
-function post_installation {
+post_installation() {
   echo "------"
 
   # Load post-environment variables
@@ -476,7 +479,7 @@ function post_installation {
   sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
   sudo -A xcodebuild -license accept
 
-  if [[ ! -f $BREW_PREFIX/bin/python && -f $BREW_PREFIX/bin/python3 ]]; then
+  if [ ! -f "${BREW_PREFIX}/bin/python" ] && [ -f "${BREW_PREFIX}/bin/python3" ]; then
     sudo -A ln -s "$BREW_PREFIX/bin/python3" "$BREW_PREFIX/bin/python"
     echo "Python3 → Python2 patch was applied"
   fi
@@ -514,7 +517,7 @@ function post_installation {
 #############################
 ### All installation step ###
 #############################
-function installation {
+installation() {
   # optimziations_setup
   finder_setup
   settings_setup
