@@ -4,8 +4,10 @@ set -eu
 #############################
 ### Environment variables ###
 #############################
-read -r "Enter your password: " PASSWORD
-read -r "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  " backup_ask
+printf "%s" "Enter your password: "
+read -r PASSWORD
+printf "%s" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
+read -r backup_ask
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MIN_OS=11.6
@@ -40,7 +42,7 @@ check_env() {
     exit 1
   fi
 
-  if [ "$(print "%b" $MIN_OS"\n$OS_VER" | sort -V | tail -1)" = "$MIN_OS" ]; then
+  if [ "$(printf "%b" $MIN_OS"\n$OS_VER" | sort -V | tail -1)" = "$MIN_OS" ]; then
     echo "Your OS does not meet requirements"
     echo "Minimum required OS is: v11.6.x"
     exit 1
