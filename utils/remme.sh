@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -eu
 
 #############################
 ### Remove-Me Auto-script ###
@@ -11,7 +11,7 @@ CLEAN_FOLDERS=(
   "/Library/LaunchDaemons"
   "/Library/LaunchAgents"
   "/Library/Preferences"
-  "/Library/PrivilegedHelperTools",
+  "/Library/PrivilegedHelperTools"
   "/Library/Application Support"
   # User library clean folders
   "$HOME/Library/LaunchDaemons"
@@ -28,7 +28,7 @@ CLEAN_FOLDERS=(
   "/var/db"
 )
 
-if [[ "$1" == "" ]]; then
+if [ -z "$1" ]; then
   echo "Application path is required!"
   echo "example, /Applications/XCode.app"
   exit 0

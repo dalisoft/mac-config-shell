@@ -1,7 +1,7 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -eu
 
-if [ "${1: -4}" == ".mkv" ]; then
+if [ "${1: -4}" = ".mkv" ]; then
   filename="${1%.*}"
   echo "Found mkv file, starting convertation"
   ffmpeg -y -i "$1" \
