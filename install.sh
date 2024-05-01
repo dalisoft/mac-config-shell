@@ -5,7 +5,9 @@ set -eu
 ### Environment variables ###
 #############################
 printf "%s" "Enter your password: "
+stty -echo
 read -r PASSWORD
+stty echo
 printf "%s" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
 read -r backup_ask
 PWD=$(pwd)
@@ -48,7 +50,7 @@ check_env() {
     exit 1
   fi
 
-  if ls ~/* 1>/dev/null; then
+  if ! ls ~/* 1>/dev/null; then
     echo "You do not have permission, please give full-disk access"
     exit 1
   fi
@@ -198,6 +200,9 @@ settings_setup() {
   echo "Configuring Settings..."
 
   osascript -e 'tell application "System Preferences" to quit'
+
+  # UI
+  defaults -currentHost write -g AppleFontSmoothing -int 0
 
   # General
   defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
@@ -547,6 +552,8 @@ installation() {
 
 RETRIES=0
 
+# Avoid sleep for make sure all apps installed
+caffeinate -d -t 14400 &
 ### Run preparation
 ### steps once
 check_and_prepare
@@ -569,3 +576,6 @@ while true; do
     sleep 15
   fi
 done
+
+# We can kill sleep prevention after successfully installation
+killall caffeinate
