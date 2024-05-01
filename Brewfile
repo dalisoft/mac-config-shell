@@ -40,8 +40,9 @@ brew "curl"
 brew "coreutils"
 brew "deno"
 brew "docker"
+brew "docker-buildx"
 brew "docker-compose"
-brew "dprint"
+#brew "dprint"
 brew "exiftool"
 brew "eza"
 brew "fd"
@@ -186,7 +187,7 @@ cask "macs-fan-control"
 cask "macupdater"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
-cask "microsoft-office"
+#cask "microsoft-office"
 cask "miniforge"
 cask "miro"
 #cask "moonlight"
@@ -201,7 +202,7 @@ cask "numi"
 #cask "outline-manager"
 cask "obsidian"
 cask "onlyoffice"
-cask "orbstack"
+#cask "orbstack"
 #cask "paragon-ntfs"
 cask "parsec"
 cask "postgres-unofficial"
@@ -223,7 +224,7 @@ cask "reikey"
 #cask "slack"
 cask "soulver"
 cask "spotify"
-#cask "sublime-text"
+cask "sublime-text"
 cask "tableplus"
 #cask "teamviewer"
 cask "tailscale"
@@ -232,12 +233,12 @@ cask "telegram-desktop"
 cask "upscayl"
 cask "utm"
 cask "veracrypt"
-cask "virtualbox-beta"
+cask "virtualbox@beta"
 cask "visual-studio-code"
-cask "visual-studio-code-insiders"
+cask "visual-studio-code@insiders"
 #cask "vnc-viewer"
 cask "vmware-fusion"
-#cask "webstorm"
+cask "webstorm"
 #cask "wifi-explorer-pro"
 cask "zed"
 #cask "zerotier-one"
@@ -258,6 +259,7 @@ mas "Data Modeler", id: 1575153701
 #mas "DaVinci Resolve", id: 571213070
 mas "Disk Decipher", id: 516538625
 mas "Disk Speed Test", id: 425264550
+mas "Enchanted", id: 6474268307
 mas "Hex Fiend", id: 1342896380
 #mas "Home Design 3D", id: 1342163391
 #mas "iMovie", id: 408981434
@@ -266,7 +268,11 @@ mas "iPreview", id: 1519213509
 #mas "Live Home 3D", id: 1066144116
 #mas "Medis 1", id: 1063631769
 mas "Medis", id: 1579200037
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Outlook", id: 985367838
+mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Word", id: 462054704
 #mas "Mockup", id: 1527554407
 #mas "MQTT Explorer", id: 1455214828
 #mas "Notability", id: 360593530
