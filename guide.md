@@ -83,10 +83,6 @@ These settings may be outdated or changed, so please be careful with settings
    - **Accessibility**
 5. Enable « **battery percent** »
 
-### Settings → Privacy
-
-1. Enable « **Firewall** »
-
 ### Settings → Siri & Spotlight
 
 1. Uncheck « **Siri Suggestions** »
