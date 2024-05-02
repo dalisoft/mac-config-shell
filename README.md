@@ -2,7 +2,7 @@
 
 A "shell" script which configures machine on macOS
 **Compatible with Apple Silicon**, supports only Monterey for now
-*Support for Ventura, Sonoma or later will be added later*
+_Support for Ventura, Sonoma or later will be added later_
 
 ## Note
 
@@ -34,6 +34,39 @@ cd mac-config-shell
 sh install.sh
 > "YOUR_PASSWORD"
 ```
+
+## SSH Permissions
+
+This could happen if you're copying `~/.ssh` folder from elsehwere and there are fix
+
+```sh
+chown -R $USER ~/.ssh
+find ~/.ssh -type d | xargs -L1 sudo chmod 700
+find ~/.ssh -type f | xargs -L1 sudo chmod 600
+```
+
+## To-Do
+
+| Bug Name                                       | Status        |
+| ---------------------------------------------- | ------------- |
+| Fix disk check condition                       | ✅ Fixed      |
+| Add temporarily disable sleep script           | ✅ Fixed      |
+| Add `disable font anti-alias`                  | ✅ Fixed      |
+| Hide `password enter`                          | ✅ Fixed      |
+| Tap to Click Enable, Scroll, Zoom              | ✅ Fixed      |
+| SSH Passwordless                               | ✅ Fixed      |
+| Enable Firewall                                | ✅ Fixed      |
+| Open & Sign In MAS                             | ❌ Won't Fix  |
+| Allow older versions via MAS                   | ❌ Won't Fix  |
+| Enable remote enable (SSH)                     | 📝 See guides |
+| Add `Dock enlarge`?                            | 📝 See guides |
+| Disable personalized ads                       | 📝 See guides |
+| Calculate all sizes options?                   | 📝 See guides |
+| Show Downloads, Movies, Music, Pictures, User? | 📝 See guides |
+| Recent Items — 0                               | 📝 See guides |
+| Uncheck “Close windows when quitting an app”   | 📝 See guides |
+| Fix SSH folder permissions                     |               |
+| Photos iCloud Enable                           | 🤔 Out-of-Box |
 
 ## Old histories
 
