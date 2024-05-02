@@ -56,8 +56,8 @@ find ~/.ssh -type f | xargs -L1 sudo chmod 600
 | Tap to Click Enable, Scroll, Zoom              | ✅ Fixed      |
 | SSH Passwordless                               | ✅ Fixed      |
 | Enable Firewall                                | ✅ Fixed      |
-| Open & Sign In MAS                             | ❌ Won't Fix  |
-| Allow older versions via MAS                   | ❌ Won't Fix  |
+| Open & Sign In MAS when run script             | ❌ Won't Fix  |
+| Auto-allow older versions via MAS              | ❌ Won't Fix  |
 | Enable remote enable (SSH)                     | 📝 See guides |
 | Add `Dock enlarge`?                            | 📝 See guides |
 | Disable personalized ads                       | 📝 See guides |
@@ -65,7 +65,7 @@ find ~/.ssh -type f | xargs -L1 sudo chmod 600
 | Show Downloads, Movies, Music, Pictures, User? | 📝 See guides |
 | Recent Items — 0                               | 📝 See guides |
 | Uncheck “Close windows when quitting an app”   | 📝 See guides |
-| Fix SSH folder permissions                     |               |
+| Fix SSH folder permissions                     | 📝 See above  |
 | Photos iCloud Enable                           | 🤔 Out-of-Box |
 
 ## Old histories
