@@ -513,9 +513,10 @@ post_installation() {
   echo "max-cache-ttl 14400" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "enable-ssh-support" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "extra-socket $HOME/.gnupg/S.gpg-agent.extra" >>"$HOME/.gnupg/gpg-agent.conf"
-  chown -R "$USER" "$HOME/.gnupg"
-  chmod 700 "$HOME/.gnupg"
-  chmod 600 "$HOME/.gnupg/gpg-agent.conf"
+  chown -R "$USER" ~/.gnupg
+  chmod 700 ~/.gnupg
+  chmod 600 ~/.gnupg/*
+  chmod 644 ~/.gnupg/*.d
 
   # neovim plugins installation
   wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
