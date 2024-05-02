@@ -1,14 +1,13 @@
 # mac-config-shell
 
-<p align='center'>A "shell" script which configures machine on macOS<br/><b>Compatible with Apple Silicon</b></p>
-<p align='center'>Supports only macOS Big Sur 11.6+ and Monterey</p>
-<p align='center'><i>Experimental support for Ventura or later</i></p>
+A "shell" script which configures machine on macOS
+**Compatible with Apple Silicon**, supports only Monterey for now
+*Support for Ventura, Sonoma or later will be added later*
 
 ## Note
 
 > This configuration was made for remote employee who work always from home and has it's secure home for it. No one touches to my machine
-
-**I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
+> **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
 
 Looking similar for Windows? Look at [here](https://github.com/dalisoft/win-install)
 

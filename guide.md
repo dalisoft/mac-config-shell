@@ -1,8 +1,7 @@
 # Installation » macOS 11.5+
 
 > This configuration was made for remote employee who work always from home and has it's secure home for it. No one touches to my machine
-
-**I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
+> **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
 
 ## Create USB OS
 
@@ -64,24 +63,25 @@ These settings may be outdated or changed, so please be careful with settings
 
 ### Settings → Dock & Menu Bar → Control Centre
 
-1. Should be like that
+* Should be like that
 
 ![Menu-bar](./images/menu-bar.png)
 
 ![Menu-bar for MacBook](./images/menu-bar-2.png)
 ￼
 
-3. Then go-to over-these and change « **Always** » to « **When active** » on possible items
+* Then go-to over-these and change « **Always** » to « **When active** » on possible items
 
-4. Remove
-   - **AirDrop**
-   - **Time Machine**
-   - **Keyboard Brightness**
-   - **Siri**
-   - **Spotlight**
-   - **User switching**
-   - **Accessibility**
-5. Enable « **battery percent** »
+* Remove
+  * **AirDrop**
+  * **Time Machine**
+  * **Keyboard Brightness**
+  * **Siri**
+  * **Spotlight**
+  * **User switching**
+  * **Accessibility**
+
+* Enable « **battery percent** »
 
 ### Settings → Siri & Spotlight
 
@@ -117,11 +117,11 @@ These settings may be outdated or changed, so please be careful with settings
 
 > On Desktop it's **unavailable**
 
-- [x] Slightly dim the display while on battery
-- [x] Optimize video streaming while on battery
-- [x] Optimized battery changing
-- [x] Show battery status in menu bar
-- [ ] Low-power mode (**Set checked for M1 machines**)
+* [x] Slightly dim the display while on battery
+* [x] Optimize video streaming while on battery
+* [x] Optimized battery changing
+* [x] Show battery status in menu bar
+* [ ] Low-power mode (**Set checked for M1 machines**)
 
 ## Activity Monitor
 
