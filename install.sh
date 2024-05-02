@@ -201,17 +201,24 @@ settings_setup() {
 
   osascript -e 'tell application "System Preferences" to quit'
 
-  # UI
-  defaults -currentHost write -g AppleFontSmoothing -int 0
-
+  #########################
+  ######## General ########
+  #########################
   # General
   defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
   defaults write NSGlobalDomain AppleInterfaceStyle -string "Light"
   defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
 
+  # UI
+  defaults -currentHost write -g AppleFontSmoothing -int 0
+
+  # Finder?
   defaults write NSGlobalDomain AppleShowAllExtensions -bool true
   defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
+  #########################
+  ####### Keyboard ########
+  #########################
   # Keyboard
   defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
   defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
@@ -225,80 +232,108 @@ settings_setup() {
   # Sound
   defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
 
-  # Magic Trackpad config
-  defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-  defaults write NSGlobalDomain com.apple.trackpad.scaling -float 0.875
-
+  #########################
+  # Magic Trackpad config #
+  #########################
+  # Point & Click → Force Click and haptic feedback
   defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
   defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -bool false
   defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
 
+  # Point & Click → Tap-to-Click
   defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool false
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool false
-
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool false
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool false
-
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -bool false
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -bool false
 
   defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool false
 
+  # Point & Click → Look up & data detectors
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -bool false
+
+  # Scroll & Zoom → Scroll direction
+  defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+  defaults write NSGlobalDomain com.apple.trackpad.scaling -float 0.875
+
+  # Scroll & Zoom → Zoom-in-or-Out
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool true
+
+  # Scroll & Zoom → Rotate
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool false
+
   defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -bool false
 
-  # Missiong control
-  defaults write com.apple.dock mru-spaces -bool false
+  # More Gestures → App Expose
   defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+  # More Gestures → Launchpad
   defaults write com.apple.dock showLaunchpadGestureEnabled -bool true
+
+  #########################
+  ### Missiong control ####
+  #########################
+  defaults write com.apple.dock mru-spaces -bool false
   defaults write com.apple.dock expose-group-apps -bool true
   defaults write com.apple.dock expose-group-by-app -bool true
 
-  # Dock
-  defaults write com.apple.dock show-recents -bool false
+  #########################
+  ######### Dock ##########
+  #########################
+  defaults write com.apple.dock show-recents -int 0
 
-  # Activity Monitor
+  #########################
+  ### Activity Monitor ####
+  #########################
   defaults write com.apple.ActivityMonitor OpenMainWindow -bool false
   defaults write com.apple.ActivityMonitor SelectedTab -int 1
   defaults write com.apple.ActivityMonitor ShowCategory -bool false
   defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
   defaults write com.apple.ActivityMonitor UpdatePeriod -int 1
 
-  # Software Update
-  defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+  #########################
+  ### Software Update ####
+  #########################
+  defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool false
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
   defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
   defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
   defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
-  defaults write com.apple.commerce AutoUpdate -bool true
+  defaults write com.apple.commerce AutoUpdate -bool false
   defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
-  # Privacy
+  #########################
+  ######## Privacy ########
+  #########################
   defaults write com.apple.screensaver askForPassword -int 1
   defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-  # Time Machine
+  #########################
+  ##### Time Machine ######
+  #########################
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-  # Screenshots
+  #########################
+  ###### Screenshots ######
+  #########################
   defaults write com.apple.screencapture location -string "${HOME}/Desktop"
   defaults write com.apple.screencapture type -string "png"
   defaults write com.apple.screencapture disable-shadow -bool true
 
-  # Debug & Dev-mode
+  #########################
+  ######## Safari #########
+  #########################
   defaults write com.apple.appstore WebKitDeveloperExtras -bool true
   defaults write com.apple.appstore ShowDebugMenu -bool true
 
   # Prevent Photos from opening automatically when devices are plugged in
   defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-  # Disk Utility
+  #########################
+  ##### Disk Utility ######
+  #########################
   defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
-
 }
 
 #############################
@@ -451,6 +486,10 @@ install_fnm_versions() {
       fnm install "$fnm_nvm"
     fi
   done
+
+  # Use and set as default `system` node
+  fnm use system
+  fnm default system
 }
 
 ### POST-installation
@@ -492,7 +531,7 @@ post_installation() {
   fi
 
   # Rustup toolchain
-  rustup-init --profile complete --default-toolchain stable -y
+  rustup-init --profile complete --default-toolchain stable -y --no-modify-path
 
   # link OpenJDK
   sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk"
@@ -513,6 +552,24 @@ post_installation() {
   sudo -A chsh -s "$FISH_SHELL_PATH"         # change for root
   sudo -A chsh -s "$FISH_SHELL_PATH" "$USER" # change for current user
   echo "shell → fish was set"
+
+  # Unstable: Enable Remote Apple Events
+  # sudo -A systemsetup -setremoteappleevents on
+
+  # Unstable: Enable Remote login
+  # sudo -A systemsetup -setremotelogin on
+  # sudo -A dseditgroup -o edit -a "${USER}" -t user com.apple.access_ssh
+
+  # Reload SSHD
+  if ! grep 'PasswordAuthentication no' /etc/ssh/sshd_config; then
+    sudo -A launchctl stop com.openssh.sshd
+    echo "PasswordAuthentication no" | sudo -A tee /etc/ssh/sshd_config
+    echo "PubkeyAuthentication yes" | sudo -A tee /etc/ssh/sshd_config
+    sudo -A launchctl stop com.openssh.sshd
+  fi
+
+  # Enable Firewall
+  sudo -A /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
   # Terminal set theme
   defaults write com.apple.Terminal Shell "login -pfql $USER $BREW_PREFIX/bin/fish"
@@ -553,7 +610,7 @@ installation() {
 RETRIES=0
 
 # Avoid sleep for make sure all apps installed
-caffeinate -d -t 14400 &
+caffeinate -d -t 86400 &
 ### Run preparation
 ### steps once
 check_and_prepare
