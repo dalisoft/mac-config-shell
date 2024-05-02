@@ -33,6 +33,7 @@
 2. Enable « **iCloud Drive** », all locations except « **COMPUTER NAME** »
 3. Check « **Always open in list view** » at « **~/Desktop**, **Home directory** » and click to « **Use as Defaults** »
 4. Enable « **Item info** » at « **~/Desktop**, **Home directory** » and click to « **Use as Defaults** »
+5. Enable « **Calculate all sizes** » and click to « **Use as Defaults** »
 
 ## Settings
 
@@ -63,29 +64,34 @@ These settings may be outdated or changed, so please be careful with settings
 
 ### Settings → Dock & Menu Bar → Control Centre
 
-* Should be like that
+- Should be like that
 
 ![Menu-bar](./images/menu-bar.png)
 
 ![Menu-bar for MacBook](./images/menu-bar-2.png)
 ￼
 
-* Then go-to over-these and change « **Always** » to « **When active** » on possible items
+- Then go-to over-these and change « **Always** » to « **When active** » on possible items
 
-* Remove
-  * **AirDrop**
-  * **Time Machine**
-  * **Keyboard Brightness**
-  * **Siri**
-  * **Spotlight**
-  * **User switching**
-  * **Accessibility**
+- Remove
 
-* Enable « **battery percent** »
+  - **AirDrop**
+  - **Time Machine**
+  - **Keyboard Brightness**
+  - **Siri**
+  - **Spotlight**
+  - **User switching**
+  - **Accessibility**
+
+- Enable « **battery percent** »
 
 ### Settings → Siri & Spotlight
 
 1. Uncheck « **Siri Suggestions** »
+
+### Settings → Security & Privacy → Privacy
+
+See <https://privacyinternational.org/guide-step/4335/macos-opt-out-targeted-ads>
 
 ### Settings → Internet Accounts
 
@@ -111,17 +117,18 @@ These settings may be outdated or changed, so please be careful with settings
 | Prevent your Mac from sleep | ✅      | ❌      | ❌       |
 | Put HDD to sleep            | ❌      | ✅      | ✅       |
 | Enable Power Nap            | ✅      | ❌      | ✅       |
-| Low power mode              | ❌      | ✅      | ❌        |
+| Low power mode              | ❌      | ✅      | ❌       |
 
 ### Settings → Battery → Battery
 
 > On Desktop it's **unavailable**
 
-* [x] Slightly dim the display while on battery
-* [x] Optimize video streaming while on battery
-* [x] Optimized battery changing
-* [x] Show battery status in menu bar
-* [ ] Low-power mode (**Set checked for M1 machines**)
+- [x] Slightly dim the display while on battery
+- [x] Optimize video streaming while on battery
+- [x] Optimized battery changing
+
+- [x] Show battery status in menu bar
+- [ ] Low-power mode (**Set checked for M1 machines**)
 
 ## Activity Monitor
 
