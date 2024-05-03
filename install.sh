@@ -72,10 +72,8 @@ configure_env() {
   export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
 
   # Homebrew environemnt variables
-  export HOMEBREW_NO_ANALYTICS=1        # Homebrew disable telemetry
-  export HOMEBREW_NO_GOOGLE_ANALYTICS=1 # Homebrew Google telemetry
-  export HOMEBREW_NO_INSTALL_FROM_API=1 # Use Git for immediate changes
-  export HOMEBREW_NO_ENV_HINTS=1        # Hide hints for cleaner logs
+  export HOMEBREW_NO_ANALYTICS=1 # Homebrew disable telemetry
+  export HOMEBREW_NO_ENV_HINTS=1 # Hide hints for cleaner logs
 }
 
 ### Check for SUDO
