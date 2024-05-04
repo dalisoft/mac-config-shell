@@ -1,7 +1,7 @@
 # mac-config-shell
 
 A "shell" script which configures machine on macOS
-**Compatible with Apple Silicon**, supports only Monterey for now
+**Compatible with Apple Silicon**, supports only Monterey 12.4+ for now
 _Support for Ventura, Sonoma or later will be added later_
 
 ## Note
