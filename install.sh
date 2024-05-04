@@ -54,7 +54,7 @@ check_env() {
     echo "You do not base permission, please give script permission"
     exit 1
   fi
-  if ! ls /Library/Preferences 1>/dev/null; then
+  if ! cat /Library/Preferences/com.apple.TimeMachine.plist 1>/dev/null; then
     echo "You do not have full-disk permission, please give full-disk access"
     exit 1
   fi
