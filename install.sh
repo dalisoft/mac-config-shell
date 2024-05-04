@@ -59,7 +59,7 @@ check_env() {
     exit 1
   fi
 }
-### Configre SUDO
+### Configure SUDO
 ### Askpass file
 configure_askpass() {
   rm -rf askpass.sh
@@ -413,6 +413,10 @@ install_package_manager() {
 ### Installing system packages
 install_system_packages() {
   echo "------"
+
+  # Install `mas` for asking Apple ID for App Store
+  brew install mas
+  mas install 1136220934 # Infuse
 
   # Installing bundle
   brew bundle --no-lock --verbose
