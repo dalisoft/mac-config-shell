@@ -416,7 +416,11 @@ install_system_packages() {
 
   # Install `mas` for asking Apple ID for App Store
   brew install mas
-  mas install 1136220934 # Infuse
+  # Infuse installation check
+  if ! mas install 1136220934 1>/dev/null; then
+    echo "Mac App Store failed to run."
+    exit 1
+  fi
 
   # Installing bundle
   brew bundle --no-lock --verbose
