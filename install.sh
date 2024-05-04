@@ -419,6 +419,7 @@ install_system_packages() {
   # Infuse installation check
   if ! mas install 1136220934 1>/dev/null; then
     echo "Mac App Store failed to run."
+    echo "Please ensure you're logged in to App Store"
     exit 1
   fi
 
