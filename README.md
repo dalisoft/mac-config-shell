@@ -56,7 +56,7 @@ find ~/.ssh -type f | xargs -L1 sudo chmod 600
 | Tap to Click Enable, Scroll, Zoom              | ✅ Fixed      |
 | SSH Passwordless                               | ✅ Fixed      |
 | Enable Firewall                                | ✅ Fixed      |
-| Open & Sign In MAS when run script             | ⚠️ Fixed      |
+| Open & Sign In MAS when run script             | ✅ Fixed      |
 | Auto-allow older versions via MAS              | ❌ Won't Fix  |
 | Enable remote enable (SSH)                     | 📝 See guides |
 | Add `Dock enlarge`?                            | 📝 See guides |
