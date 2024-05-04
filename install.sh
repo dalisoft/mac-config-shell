@@ -51,7 +51,11 @@ check_env() {
   fi
 
   if ! ls ~/* 1>/dev/null; then
-    echo "You do not have permission, please give full-disk access"
+    echo "You do not base permission, please give script permission"
+    exit 1
+  fi
+  if ! ls /Library/Preferences 1>/dev/null; then
+    echo "You do not have full-disk permission, please give full-disk access"
     exit 1
   fi
 }
@@ -399,7 +403,7 @@ install_package_manager() {
   echo "------"
 
   # Install Homebrew
-  if brew --version >/dev/null; then
+  if command -v brew; then
     echo "Homebrew is already installed! Continue process..."
   else
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash -
