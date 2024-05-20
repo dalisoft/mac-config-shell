@@ -69,6 +69,8 @@ These settings may be outdated or changed, so please be careful with settings
 ![Menu-bar](./images/menu-bar.png)
 
 ![Menu-bar for MacBook](./images/menu-bar-2.png)
+
+![Menu-bar for MacBook / Sonoma](./images/menu-bar-sonoma.png)
 ￼
 
 - Then go-to over-these and change « **Always** » to « **When active** » on possible items

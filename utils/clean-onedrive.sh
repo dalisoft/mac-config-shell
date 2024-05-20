@@ -54,7 +54,7 @@ CLEAN_FILES=(
   ~/Library/Preferences/com.microsoft.OneDriveUpdater.plist
   ~/Library/WebKit/com.microsoft.OneDrive
   # Application itself
-  /Applications/OneDrive.app
+  # /Applications/OneDrive.app
   # Location itself
   ~/OneDrive
   ~/OneDrive*
