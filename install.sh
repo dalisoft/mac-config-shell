@@ -25,7 +25,8 @@ LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 # M1 incompatible npm packages: "bs-platform"
 NPM_PACKAGES="npm 0x cordova esy flamebearer http-server node-gyp nodemon npm-check-updates typesync git-stats"
-PIPX_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot] osxphotos"
+PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
+PIPX_PACKAGES="osxphotos"
 
 FNM_VERSIONS="18.20.2 20.13.1"
 
@@ -442,6 +443,23 @@ install_npm_packages() {
   done
 }
 
+### Installation pip packages
+install_pip_packages() {
+  echo "------"
+
+  echo "Installing pip packages..."
+
+  INSTALLED_PACKAGES=$(pip list --format json)
+  pip install --upgrade pip
+  for package in ${PIP_PACKAGES}; do
+    if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
+      echo "Already installed pip package: $package"
+    else
+      pip install "$package"
+    fi
+  done
+}
+
 ### Installation pipx packages
 install_pipx_packages() {
   echo "------"
@@ -588,6 +606,7 @@ installation() {
 
   install_npm_packages
   install_fnm_versions
+  install_pip_packages
   install_pipx_packages
   install_mas_apps
 
