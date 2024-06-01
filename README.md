@@ -37,12 +37,22 @@ sh install.sh
 
 ## SSH Permissions
 
-This could happen if you're copying `~/.ssh` folder from elsehwere and there are fix
+This could happen if you're copying `~/.ssh` folder from elsewhere and there are fix
 
 ```sh
 chown -R $USER ~/.ssh
 find ~/.ssh -type d | xargs -L1 sudo chmod 700
 find ~/.ssh -type f | xargs -L1 sudo chmod 600
+```
+
+### GNUPG Permissions
+
+This could happen if you're copying `~/.gnupg` folder from elsewhere and there are fix
+
+```sh
+chown -R $USER ~/.gnupg
+find ~/.gnupg -type d | xargs -L1 sudo chmod 700
+find ~/.gnupg -type f | xargs -L1 sudo chmod 600
 ```
 
 ## To-Do
