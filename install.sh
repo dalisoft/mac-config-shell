@@ -19,7 +19,7 @@ MIN_OS=12.4
 ##############################
 MAX_TRIES=5
 
-ENSURE_FOLDERS=".npm-global/lib Desktop/dotfiles/.vim/autoload .gnupg"
+ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
@@ -530,7 +530,7 @@ post_installation() {
   chmod 644 ~/.gnupg/*.d
 
   # neovim plugins installation
-  wget -O "$HOME/Desktop/dotfiles/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  wget -O "$HOME/.vim/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa"
 
   # use XCode SDK tools
