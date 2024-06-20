@@ -1,0 +1,7 @@
+convco
+cocogitto
+bashdb
+bc
+git-chglog/git-chglog
+hub
+bind
