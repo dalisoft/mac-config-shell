@@ -1,13 +1,10 @@
-tap "git-chglog/git-chglog"
 tap "heroku/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "mongodb/brew"
 #tap "mutagen-io/mutagen"
 tap "ngrok/ngrok"
 tap "oven-sh/bun"
-tap "pavelzw/pavelzw"
 tap "libsql/sqld"
 tap "tursodatabase/tap"
 brew "act"
@@ -39,7 +36,8 @@ brew "deno"
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
-#brew "dprint"
+brew "difftastic"
+brew "dprint"
 brew "exiftool"
 brew "eza"
 brew "fd"
@@ -63,7 +61,6 @@ brew "gnupg"
 brew "glib"
 brew "go"
 brew "htop"
-brew "hub"
 brew "hyperfine"
 brew "imagemagick"
 brew "iperf"
@@ -71,6 +68,7 @@ brew "iperf3"
 brew "pango"
 brew "jpeg"
 brew "kind"
+brew "kcov"
 brew "lego"
 brew "less"
 brew "libffi"
@@ -105,6 +103,7 @@ brew "rustup-init"
 brew "rust-analyzer"
 brew "shellcheck"
 brew "shfmt"
+brew "shellspec"
 brew "smartmontools"
 brew "speedtest-cli"
 brew "starship"
@@ -124,7 +123,6 @@ brew "wrk"
 brew "yarn"
 brew "zig"
 brew "zsh"
-brew "git-chglog/git-chglog/git-chglog"
 brew "heroku/brew/heroku"
 brew "mongodb/brew/mongodb-community"
 #brew "mutagen-io/mutagen/mutagen"
@@ -136,6 +134,7 @@ cask "1password"
 cask "adguard"
 cask "adguard-vpn"
 cask "adobe-acrobat-reader"
+cask "affine"
 #cask "affinity-designer"
 #cask "affinity-photo"
 cask "aldente"
@@ -154,6 +153,8 @@ cask "beekeeper-studio"
 #cask "bettertouchtool"
 cask "boop"
 cask "browserstacklocal"
+cask "canva"
+cask "chatgpt"
 cask "coconutbattery"
 #cask "codeedit"
 cask "cryptomator"
@@ -161,6 +162,8 @@ cask "cyberduck"
 cask "datagrip"
 #cask "dataspell"
 #cask "diffusionbee"
+cask "diffusionbee"
+cask "direqual"
 #cask "docker"
 #cask "fedora-media-writer"
 cask "figma"
@@ -171,22 +174,25 @@ cask "font-jetbrains-mono"
 cask "framer"
 #cask "eloston-chromium"
 cask "fsnotes"
+cask "gemini"
 cask "gitbutler"
 cask "hiddenbar"
 cask "iina"
 cask "imazing"
+cask "iterm2"
 cask "kap"
 cask "knockknock"
 #cask "krisp"
 cask "lapce"
 #cask "logseq"
 cask "lulu"
+cask "lunacy"
 #cask "macfuse"
-cask "macs-fan-control"
+#cask "macs-fan-control"
 cask "macupdater"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
-cask "microsoft-office"
+#cask "microsoft-office"
 cask "miniforge"
 cask "miro"
 cask "mongodb-compass"
@@ -220,7 +226,7 @@ cask "rectangle"
 cask "redis-pro"
 cask "redisinsight"
 cask "reikey"
-#cask "rustrover"
+cask "rustrover"
 #cask "sensei"
 #cask "slack"
 cask "soulver"
@@ -231,6 +237,7 @@ cask "tableplus"
 cask "tailscale"
 #cask "taskexplorer"
 cask "telegram-desktop"
+cask "tg-pro"
 cask "upscayl"
 cask "utm"
 cask "veracrypt"
@@ -269,7 +276,11 @@ mas "iPreview", id: 1519213509
 #mas "Live Home 3D", id: 1066144116
 #mas "Medis 1", id: 1063631769
 mas "Medis", id: 1579200037
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Outlook", id: 985367838
+mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Word", id: 462054704
 #mas "Mockup", id: 1527554407
 #mas "MQTT Explorer", id: 1455214828
 #mas "Notability", id: 360593530
@@ -277,6 +288,8 @@ mas "Microsoft Remote Desktop", id: 1295203466
 #mas "Ora", id: 1340501510
 #mas "Outline", id: 1356178125
 mas "Noted", id: 1446580517
+mas "OneDrive", id: 823766827
+mas "OpenCat", id: 6445999201
 mas "Photomator", id: 1444636541
 mas "Pixelmator Pro", id: 1289583905
 #mas "Planner 5D", id: 1310584536
@@ -284,7 +297,7 @@ mas "RectLabel", id: 1490990105
 mas "Save to Raindrop.io", id: 1549370672
 #mas "Sculptor", id: 1493318997
 mas "Sequel Ace", id: 1518036000
-mas "TeraCopy", id: 1378806557
+#mas "TeraCopy", id: 1378806557
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 #mas "Transporter", id: 1450874784
