@@ -621,6 +621,9 @@ installation() {
 
 RETRIES=0
 
+# We should kill sleep prevention before installation
+killall caffeinate
+
 # Avoid sleep for make sure all apps installed
 caffeinate -d -t 86400 &
 ### Run preparation
