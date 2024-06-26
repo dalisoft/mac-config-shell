@@ -28,7 +28,7 @@ NPM_PACKAGES="npm 0x cordova esy flamebearer http-server node-gyp nodemon npm-ch
 PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
 PIPX_PACKAGES="osxphotos"
 
-FNM_VERSIONS="18.20.3 20.14.0"
+FNM_VERSIONS="18.20.3 20.15.0"
 
 #############################
 ### Preparations of steps ###
@@ -625,7 +625,7 @@ RETRIES=0
 killall caffeinate
 
 # Avoid sleep for make sure all apps installed
-caffeinate -d -t 86400 &
+caffeinate -d -t 43200 &
 ### Run preparation
 ### steps once
 check_and_prepare
