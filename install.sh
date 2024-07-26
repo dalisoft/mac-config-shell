@@ -546,7 +546,7 @@ post_installation() {
   rustup-init --profile complete --default-toolchain stable -y --no-modify-path
 
   # link OpenJDK
-  sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk@11.jdk"
+  sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk"
   echo "OpenJDK patch was applied"
 
   # locate binaries
