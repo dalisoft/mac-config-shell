@@ -28,7 +28,7 @@ NPM_PACKAGES="npm 0x cordova esy flamebearer http-server node-gyp nodemon npm-ch
 PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
 PIPX_PACKAGES="osxphotos"
 
-FNM_VERSIONS="18.20.4 20.16.0"
+FNM_VERSIONS="18.20.4 20.17.0"
 
 #############################
 ### Preparations of steps ###
