@@ -12,7 +12,7 @@ printf "\n%s\n" "Did you already backup up your config? [Y]es/[N]o. Default is [
 read -r backup_ask
 PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
-MIN_OS=12.4
+MIN_OS=14.6
 
 ##############################
 ### Installation variables ###
@@ -24,11 +24,11 @@ LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 # M1 incompatible npm packages: "bs-platform"
-NPM_PACKAGES="npm 0x cordova esy flamebearer http-server node-gyp nodemon npm-check-updates typesync git-stats"
+NPM_PACKAGES="0x @anthropic-ai/claude-code cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typescript typescript-language-server typesync"
 PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
 PIPX_PACKAGES="osxphotos"
 
-FNM_VERSIONS="18.20.4 20.17.0"
+FNM_VERSIONS="18.20.8 20.19.3 22.17.0"
 
 #############################
 ### Preparations of steps ###
@@ -46,7 +46,7 @@ check_env() {
 
   if [ "$(printf "%b" $MIN_OS"\n$OS_VER" | sort -V | tail -1)" = "$MIN_OS" ]; then
     echo "Your OS does not meet requirements"
-    echo "Minimum required OS is: v11.6.x"
+    echo "Minimum required OS is: v14.6.x"
     exit 1
   fi
 
@@ -625,7 +625,7 @@ RETRIES=0
 killall caffeinate
 
 # Avoid sleep for make sure all apps installed
-caffeinate -d -t 43200 &
+caffeinate -sdt 43200 &
 ### Run preparation
 ### steps once
 check_and_prepare
