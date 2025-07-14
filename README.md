@@ -1,15 +1,15 @@
 # mac-config-shell
 
 A "shell" script which configures machine on macOS
-**Compatible with Apple Silicon**, supports only Monterey 12.4+ for now
-_Support for Ventura, Sonoma or later will be added later_
+**Compatible with Apple Silicon**, supports only Sonoma 14.6+ for now
+_Support for Sonoma, Sequoia or later will be added later_
 
 ## Note
 
 > This configuration was made for remote employee who work always from home and has it's secure home for it. No one touches to my machine
 > **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
 
-Looking similar for Windows? Look at [here](https://github.com/dalisoft/win-install)
+Looking similar for Windows? Look at [Windows version](https://github.com/dalisoft/win-install)
 
 ## Used projects
 
@@ -17,7 +17,7 @@ Looking similar for Windows? Look at [here](https://github.com/dalisoft/win-inst
 
 ## Guide
 
-If you want guide (optional), there exists a file. See [here](./guide.md)
+If you want guide (optional), there exists a file. See [guide at here](./guide.md)
 
 ## Pre-installation
 
