@@ -24,7 +24,7 @@ LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 # M1 incompatible npm packages: "bs-platform"
-NPM_PACKAGES="0x @anthropic-ai/claude-code cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typescript typescript-language-server typesync"
+NPM_PACKAGES="0x cordova esy git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
 PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
 PIPX_PACKAGES="osxphotos"
 
