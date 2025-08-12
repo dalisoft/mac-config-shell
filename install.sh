@@ -24,11 +24,11 @@ LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 # M1 incompatible npm packages: "bs-platform"
-NPM_PACKAGES="0x cordova esy git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
-PIP_PACKAGES="virtualenv jupyterlab notebook labelme labelImg psrecord[plot]"
-PIPX_PACKAGES="osxphotos"
+NPM_PACKAGES="@anthropic-ai/claude-code 0x cordova esy git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
+PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
+UV_TOOLS="claude-monitor osxphotos"
 
-FNM_VERSIONS="18.20.8 20.19.3 22.17.0"
+FNM_VERSIONS="18.20.8 20.19.4 22.18.0"
 
 #############################
 ### Preparations of steps ###
@@ -460,18 +460,18 @@ install_pip_packages() {
   done
 }
 
-### Installation pipx packages
-install_pipx_packages() {
+### Installation uv tools
+install_uv_tools() {
   echo "------"
 
-  echo "Installing pipx packages..."
+  echo "Installing uv tools..."
 
-  INSTALLED_PACKAGES=$(pipx list --json)
-  for package in ${PIPX_PACKAGES}; do
+  INSTALLED_PACKAGES=$(uv tool list)
+  for package in ${UV_TOOLS}; do
     if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
-      echo "Already installed pipx package: $package"
+      echo "Already installed uv tool: $package"
     else
-      pipx install "$package"
+      uv tool install --python 3.12 "$package"
     fi
   done
 }
