@@ -23,7 +23,7 @@ ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
-NPM_PACKAGES="@anthropic-ai/claude-code @google/gemini-cli @openai/codex 0x cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates opencode-ai typesync"
+NPM_PACKAGES="@anthropic-ai/claude-code @google/gemini-cli @openai/codex 0x cordova @qwen-code/qwen-code@latest esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates opencode-ai typesync"
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
