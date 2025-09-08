@@ -27,7 +27,7 @@ NPM_PACKAGES="@anthropic-ai/claude-code @google/gemini-cli @openai/codex 0x cord
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
-FNM_VERSIONS="18.20.8 20.19.4 22.18.0"
+FNM_VERSIONS="18.20.8 20.19.5 22.19.0"
 
 #############################
 ### Preparations of steps ###
