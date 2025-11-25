@@ -253,7 +253,7 @@ cask "rsyncui"
 #cask "rustrover"
 #cask "sensei"
 cask "send-to-kindle"
-cask "slack"
+#cask "slack"
 cask "soulver"
 #cask "spotify"
 #cask "spotube"
@@ -270,7 +270,7 @@ cask "tg-pro"
 #cask "upscayl"
 cask "utm"
 cask "veracrypt"
-cask "virtualbox"
+#cask "virtualbox"
 cask "visual-studio-code"
 #cask "vlc"
 #cask "vnc-viewer"
@@ -279,7 +279,7 @@ cask "visual-studio-code"
 #cask "windsurf"
 cask "zed"
 #cask "zerotier-one"
-cask "zoom"
+#cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "AdGuard Mail", id: 6499493699
 mas "Apple Configurator", id: 1037126344
@@ -339,5 +339,5 @@ mas "VN", id: 1494451650
 #mas "Wappalyzer", id: 1520333300
 mas "WebSocket Client", id: 1399498094
 mas "Windows App", id: 1295203466
-mas "WireGuard", id: 1451685025
+#mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
