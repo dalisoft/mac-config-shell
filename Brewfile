@@ -89,7 +89,7 @@ brew "neovim"
 brew "nmap"
 brew "nss"
 brew "octave"
-brew "ollama", restart_service: :changed
+#brew "ollama", restart_service: :changed
 brew "opencv"
 brew "openjdk@11"
 brew "parallel"
