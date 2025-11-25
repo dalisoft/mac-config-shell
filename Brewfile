@@ -184,7 +184,7 @@ cask "font-fira-code"
 cask "font-jetbrains-mono"
 cask "framer"
 #cask "eloston-chromium"
-cask "fsnotes"
+#cask "fsnotes"
 cask "gcloud-cli"
 #cask "geany"
 cask "gemini"
@@ -222,7 +222,7 @@ cask "moonlight"
 #cask "msty"
 cask "netnewswire"
 cask "ngrok"
-cask "nota"
+#cask "nota"
 #cask "notesollama"
 cask "notion"
 cask "numi"
@@ -317,7 +317,7 @@ mas "Medis", id: 1579200037
 #mas "Octotree", id: 1457450145
 #mas "Ora", id: 1340501510
 #mas "Outline", id: 1356178125
-mas "Noted", id: 1446580517
+#mas "Noted", id: 1446580517
 #mas "OneDrive", id: 823766827
 mas "OpenCat", id: 6445999201
 mas "Perplexity", id: 6714467650
