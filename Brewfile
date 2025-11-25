@@ -291,7 +291,7 @@ mas "CapCut", id: 1500855883
 #mas "Codye", id: 1516894961
 #mas "CodeOfWar", id: 1310262344
 mas "CompareMerge2", id: 1459748650
-mas "Craft", id: 1487937127
+#mas "Craft", id: 1487937127
 mas "Data Modeler", id: 1575153701
 #mas "Developer", id: 640199958
 #mas "DaVinci Resolve", id: 571213070
