@@ -12,6 +12,7 @@ brew "pixman"
 brew "cairo"
 brew "giflib"
 brew "openblas"
+brew "sqlite"
 brew "aider"
 brew "ansible"
 brew "aria2"
@@ -24,6 +25,7 @@ brew "btop"
 brew "cassowary"
 brew "certbot"
 brew "pkgconf"
+brew "cliproxyapi", restart_service: :changed
 brew "cmake"
 brew "ruby"
 brew "cocoapods"
@@ -94,7 +96,6 @@ brew "parallel"
 brew "pinentry-mac"
 brew "pipx"
 brew "pnpm"
-brew "postgresql@14"
 brew "qemu"
 brew "rclone"
 brew "repomix"
@@ -136,8 +137,7 @@ cask "adguard"
 cask "adguard-vpn"
 cask "adobe-acrobat-reader"
 cask "affine"
-#cask "affinity-designer"
-#cask "affinity-photo"
+cask "affinity"
 cask "aldente"
 cask "alt-tab"
 cask "altair-graphql-client"
@@ -161,10 +161,10 @@ cask "calibre"
 cask "canva"
 cask "chatgpt"
 cask "claude"
-cask "cloudflare-warp"
 cask "coconutbattery"
 cask "codeedit"
 cask "comfyui"
+cask "core-tunnel"
 cask "cryptomator"
 cask "cursor"
 cask "cyberduck"
@@ -272,14 +272,16 @@ cask "utm"
 cask "veracrypt"
 cask "virtualbox"
 cask "visual-studio-code"
-cask "visual-studio-code@insiders"
+cask "vlc"
 #cask "vnc-viewer"
 cask "webstorm"
 #cask "wifi-explorer-pro"
+cask "windsurf"
 cask "zed"
 #cask "zerotier-one"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
+mas "AdGuard Mail", id: 6499493699
 mas "Apple Configurator", id: 1037126344
 mas "Baking Soda", id: 1601151613
 mas "Blackmagic Disk Speed Test", id: 425264550
@@ -289,7 +291,6 @@ mas "CapCut", id: 1500855883
 #mas "Codye", id: 1516894961
 mas "CodeOfWar", id: 1310262344
 mas "CompareMerge2", id: 1459748650
-mas "Core Tunnel", id: 1354318707
 mas "Craft", id: 1487937127
 mas "Data Modeler", id: 1575153701
 #mas "Developer", id: 640199958
