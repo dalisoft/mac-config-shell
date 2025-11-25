@@ -135,7 +135,7 @@ brew "turso"
 cask "1password"
 cask "adguard"
 cask "adguard-vpn"
-cask "adobe-acrobat-reader"
+#cask "adobe-acrobat-reader"
 cask "affine"
 cask "affinity"
 cask "aldente"
@@ -289,7 +289,7 @@ mas "Blackmagic RAW Speed Test", id: 1466185689
 mas "CapCut", id: 1500855883
 #mas "Cleaner for Xcode", id: 1296084683
 #mas "Codye", id: 1516894961
-mas "CodeOfWar", id: 1310262344
+#mas "CodeOfWar", id: 1310262344
 mas "CompareMerge2", id: 1459748650
 mas "Craft", id: 1487937127
 mas "Data Modeler", id: 1575153701
@@ -307,10 +307,10 @@ mas "iPreview", id: 1519213509
 mas "LG Screen Manager", id: 1142051783
 #mas "Medis 1", id: 1063631769
 mas "Medis", id: 1579200037
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
+#mas "Microsoft Excel", id: 462058435
+#mas "Microsoft Outlook", id: 985367838
+#mas "Microsoft PowerPoint", id: 462062816
+#mas "Microsoft Word", id: 462054704
 #mas "Mockup", id: 1527554407
 #mas "MQTT Explorer", id: 1455214828
 #mas "Notability", id: 360593530
