@@ -27,7 +27,7 @@ NPM_PACKAGES="@anthropic-ai/claude-code @github/copilot @google/gemini-cli @open
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
-FNM_VERSIONS="18.20.8 20.19.6 22.21.1 24.11.1"
+FNM_VERSIONS="18.20.8 20.19.6 22.21.1 24.12.0"
 
 #############################
 ### Preparations of steps ###
@@ -585,8 +585,8 @@ post_installation() {
   # Terminal set theme
   defaults write com.apple.Terminal Shell "login -pfql $USER $BREW_PREFIX/bin/fish"
   defaults write com.apple.Terminal NSNavLastRootDirectory "$HOME/Desktop/dotfiles"
-  defaults write com.apple.Terminal "Default Window Settings" "Transcluent"
-  defaults write com.apple.Terminal "Startup Window Settings" "Transcluent"
+  defaults write com.apple.Terminal "Default Window Settings" "Translucent"
+  defaults write com.apple.Terminal "Startup Window Settings" "Translucent"
 }
 
 #############################
