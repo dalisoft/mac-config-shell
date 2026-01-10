@@ -23,7 +23,7 @@ ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
-NPM_PACKAGES="@anthropic-ai/claude-code @github/copilot @google/gemini-cli @openai/codex @qwen-code/qwen-code@latest @sourcegraph/amp@latest 0x cline cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates opencode-ai typesync"
+BUN_NPM_PACKAGES="@github/copilot @google/gemini-cli @openai/codex @qwen-code/qwen-code@latest @sourcegraph/amp@latest 0x cline cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
@@ -427,17 +427,17 @@ install_system_packages() {
 }
 
 ### Installation npm packages
-install_npm_packages() {
+install_bun_npm_packages() {
   echo "------"
 
   echo "Installing npm packages..."
 
-  INSTALLED_PACKAGES=$(npm list --global --depth=0 --json)
-  for package in ${NPM_PACKAGES}; do
+  INSTALLED_PACKAGES=$(bun pm list --global)
+  for package in ${BUN_NPM_PACKAGES}; do
     if [ "$(echo "$INSTALLED_PACKAGES" | grep -o "\"$package\"")" = "\"$package\"" ]; then
       echo "Already installed npm package: $package"
     else
-      npm install --global "$package"
+      bun install --global "$package"
     fi
   done
 }
@@ -603,7 +603,7 @@ installation() {
   # dotfiles installation
   dotfiles_installation
 
-  install_npm_packages
+  install_bun_npm_packages
   install_fnm_versions
   install_pip_packages
   install_pipx_packages
