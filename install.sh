@@ -23,7 +23,7 @@ ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
-BUN_NPM_PACKAGES="@github/copilot @google/gemini-cli @qwen-code/qwen-code@latest @sourcegraph/amp@latest 0x cline cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
+BUN_NPM_PACKAGES="@github/copilot @qwen-code/qwen-code@latest @sourcegraph/amp@latest 0x cline command-code cordova esy flamebearer git-stats http-server neon-cli node-gyp nodemon npm npm-check-updates typesync"
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
