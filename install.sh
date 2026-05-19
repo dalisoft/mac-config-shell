@@ -27,7 +27,7 @@ BUN_NPM_PACKAGES="@github/copilot @google/gemini-cli @qwen-code/qwen-code@latest
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
 UV_TOOLS="claude-monitor osxphotos"
 
-FNM_VERSIONS="18.20.8 20.19.6 22.21.1 24.12.0"
+FNM_VERSIONS="18.20.8 20.20.2 22.22.3 24.15.0"
 
 #############################
 ### Preparations of steps ###
