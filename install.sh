@@ -350,17 +350,20 @@ external_setup() {
   sudo defaults write /Library/Preferences/org.chromium.Chromium BuiltInDnsClientEnabled -bool false
   sudo defaults write /Library/Preferences/org.chromium.Chromium DnsOverHttpsMode -string "off"
   sudo defaults write /Library/Preferences/org.chromium.Chromium NetworkPredictionOptions -int 2
+  sudo defaults write /Library/Preferences/org.chromium.Chromium QuicAllowed -bool false
 
   # Chrome
   sudo defaults write /Library/Preferences/com.google.Chrome BuiltInDnsClientEnabled -bool false
   sudo defaults write /Library/Preferences/com.google.Chrome DnsOverHttpsMode -string "off"
   sudo defaults write /Library/Preferences/com.google.Chrome NetworkPredictionOptions -int 2
+  sudo defaults write /Library/Preferences/com.google.Chrome QuicAllowed -bool false
 
   # MS Edge
   sudo defaults write /Library/Preferences/com.microsoft.Edge BuiltInDnsClientEnabled -bool false
   sudo defaults write /Library/Preferences/com.microsoft.Edge DnsOverHttpsMode -string "off"
   sudo defaults write /Library/Preferences/com.microsoft.Edge NetworkPredictionOptions -int 2
   sudo defaults write /Library/Preferences/com.microsoft.Edge NewTabPagePrerenderEnabled -bool false
+  sudo defaults write /Library/Preferences/com.microsoft.Edge QuicAllowed -bool false
 
 }
 
