@@ -108,7 +108,7 @@ sudo_access_check() {
 #############################
 # See link for more info
 # https://blog.macstadium.com/blog/simple-optimizations-for-macos-and-ios-build-agents
-optimziations_setup() {
+optimizations_setup() {
   echo "------"
 
   sudo -A mdutil -a -i off
@@ -335,6 +335,25 @@ settings_setup() {
   ##### Disk Utility ######
   #########################
   defaults write com.apple.DiskUtility SidebarShowAllDevices -bool true
+}
+
+external_setup() {
+  echo "------"
+
+  echo "Configuring External settings..."
+
+  #########################
+  ####### Browsers ########
+  #########################
+
+  # Chromium
+  sudo defaults write /Library/Preferences/org.chromium.Chromium BuiltInDnsClientEnabled -bool false
+
+  # Chrome
+  sudo defaults write /Library/Preferences/org.google.Chrome BuiltInDnsClientEnabled -bool false
+
+  # MS Edge
+  sudo defaults write /Library/Preferences/com.microsoft.edgemac BuiltInDnsClientEnabled -bool false
 }
 
 #############################
@@ -593,9 +612,10 @@ post_installation() {
 ### All installation step ###
 #############################
 installation() {
-  # optimziations_setup
+  # optimizations_setup
   finder_setup
   settings_setup
+  external_setup
 
   install_package_manager
   install_system_packages
@@ -611,6 +631,9 @@ installation() {
 
   # Post-installation
   post_installation
+
+  # Flush preferences
+  killall cfprefsd 2>/dev/null || true
 
   # Remove password by removing askpass
   rm -rf askpass.sh
