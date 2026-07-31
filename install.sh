@@ -71,7 +71,7 @@ configure_askpass() {
 configure_env() {
   export NPM_CONFIG_PREFIX="$HOME/.npm-global"
   export SUDO_ASKPASS="$PWD/askpass.sh"
-  export PATH="$NPM_CONFIG_PREFIX/bin:/usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
+  export PATH="$NPM_CONFIG_PREFIX/bin:/usr/local/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH"
 
   # Homebrew environment variables
   export HOMEBREW_NO_ANALYTICS=1 # Homebrew disable telemetry
