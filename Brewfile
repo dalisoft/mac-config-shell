@@ -138,6 +138,7 @@ brew "oven-sh/bun/bun"
 brew "supabase/tap/supabase"
 brew "turso"
 cask "1password"
+cask "1password-cli"
 cask "adguard"
 cask "adguard-vpn"
 #cask "adobe-acrobat-reader"
@@ -152,6 +153,7 @@ cask "altserver"
 cask "android-studio"
 #cask "anythingllm"
 cask "antigravity"
+cask "antigravity-ide"
 cask "anytype"
 cask "appcleaner"
 cask "appflowy"
@@ -162,18 +164,19 @@ cask "appflowy"
 #cask "balenaetcher"
 #cask "beekeeper-studio"
 #cask "bettertouchtool"
+cask "block-goose"
 cask "boop"
 cask "browserstacklocal"
 cask "calibre"
 #cask "canva"
 cask "chatgpt"
-cask "claude"
+#cask "claude"
 cask "claude-code"
 cask "coconutbattery"
 #cask "codeedit"
 cask "codex"
 #cask "comfyui"
-cask "codex-app"
+cask "codexbar"
 cask "contour"
 cask "core-tunnel"
 cask "cryptomator"
@@ -190,6 +193,7 @@ cask "discord"
 cask "drawio"
 cask "droid"
 cask "excalidrawz"
+cask "factory"
 cask "figma"
 cask "firefox"
 #cask "fleet"
@@ -200,10 +204,10 @@ cask "font-jetbrains-mono"
 #cask "fsnotes"
 cask "gcloud-cli"
 #cask "geany"
-cask "gemini"
+#cask "gemini"
 cask "ghostty"
-#cask "gitbutler"
-cask "google-chrome"
+cask "grok-build"
+#cask "google-chrome"
 cask "handbrake-app"
 #cask "hiddenbar"
 #cask "huly"
@@ -214,6 +218,8 @@ cask "itermai"
 cask "jan"
 cask "kap"
 cask "kdiff3"
+cask "kiro"
+cask "kiro-cli"
 cask "kitty"
 cask "knockknock"
 #cask "krisp"
@@ -224,9 +230,9 @@ cask "localsend"
 cask "lulu"
 cask "lunacy"
 cask "maccy"
-#cask "macfuse"
+cask "macfuse"
 #cask "macs-fan-control"
-cask "macupdater"
+#cask "macupdater"
 cask "meld"
 cask "microsoft-edge"
 #cask "microsoft-auto-update"
@@ -239,17 +245,19 @@ cask "moonlight"
 #cask "monitorcontrol"
 #cask "mounty"
 #cask "msty"
+cask "mullvad-vpn"
 cask "netnewswire"
 cask "ngrok"
 #cask "nota"
 #cask "notesollama"
-cask "notion"
+#cask "notion"
 #cask "numi"
 #cask "nvidia-geforce-now"
 #cask "outline-manager"
 cask "obsidian"
 #cask "onlyoffice"
 #cask "openvpn-connect"
+cask "opencode-desktop"
 cask "orbstack"
 #cask "paragon-ntfs"
 cask "parsec"
@@ -259,7 +267,7 @@ cask "postman"
 #cask "proxyman"
 #cask "protonvpn"
 #cask "pycharm"
-#cask "qbittorrent"
+cask "qbittorrent"
 cask "raindropio"
 cask "rapidapi"
 #cask "raspberry-pi-imager"
@@ -306,10 +314,10 @@ cask "zed"
 cask "zedis"
 #cask "zerotier-one"
 #cask "zoom"
-mas "1Password for Safari", id: 1569813296
+#mas "1Password for Safari", id: 1569813296
 mas "AdGuard Mail", id: 6499493699
 mas "Apple Configurator", id: 1037126344
-mas "Baking Soda", id: 1601151613
+#mas "Baking Soda", id: 1601151613
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Blackmagic RAW Speed Test", id: 1466185689
 mas "CapCut", id: 1500855883
@@ -338,6 +346,7 @@ mas "Microsoft Excel", id: 462058435
 #mas "Microsoft Outlook", id: 985367838
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
+mas "NextDNS", id: 1464122853
 #mas "Mockup", id: 1527554407
 #mas "MQTT Explorer", id: 1455214828
 #mas "Notability", id: 360593530
@@ -352,7 +361,7 @@ mas "Photomator", id: 1444636541
 mas "Pixelmator Pro", id: 1289583905
 #mas "Planner 5D", id: 1310584536
 mas "RectLabel Pro", id: 1490990105
-mas "Save to Raindrop.io", id: 1549370672
+#mas "Save to Raindrop.io", id: 1549370672
 #mas "Sculptor", id: 1493318997
 mas "Sequel Ace", id: 1518036000
 #mas "Telegram", id: 747648890
@@ -361,7 +370,7 @@ mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 #mas "Transporter", id: 1450874784
 #mas "UpNote", id: 1398373917
-mas "Vinegar", id: 1591303229
+#mas "Vinegar", id: 1591303229
 mas "VN", id: 1494451650
 #mas "Wappalyzer", id: 1520333300
 mas "WebSocket Client", id: 1399498094
