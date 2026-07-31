@@ -4,10 +4,6 @@ set -eu
 #############################
 ### Environment variables ###
 #############################
-printf "%b" "Enter your password: "
-stty -echo
-read -r PASSWORD
-stty echo
 printf "\n%s\n" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
 read -r backup_ask
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
@@ -35,13 +31,6 @@ FNM_VERSIONS="18.20.8 20.20.2 22.23.2 24.18.1"
 ### Check and prompts ENV
 ### variables
 check_env() {
-  if [ -z "$PASSWORD" ]; then
-    echo "Hey, welcome! please trust me"
-    echo "and enter valid password here"
-    echo "I hope you understand me..."
-    exit 1
-  fi
-
   if [ "$(printf "%b" $MIN_OS"\n$OS_VER" | sort -V | tail -1)" = "$MIN_OS" ]; then
     echo "Your OS does not meet requirements"
     echo "Minimum required OS is: v14.6.x"
@@ -57,48 +46,37 @@ check_env() {
     exit 1
   fi
 }
-### Configure SUDO
-### Askpass file
-configure_askpass() {
-  rm -rf askpass.sh
-  echo "#!/bin/sh" >>./askpass.sh
-  echo "echo \"$PASSWORD\"" >>./askpass.sh
-  chmod 700 askpass.sh
-}
 
-### Configre ENV
+### Configure ENV
 ### for future actions
 configure_env() {
+  cd "$SCRIPT_DIR"
+
   export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-  export SUDO_ASKPASS="$PWD/askpass.sh"
   export PATH="$NPM_CONFIG_PREFIX/bin:/usr/local/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH"
 
   # Homebrew environment variables
   export HOMEBREW_NO_ANALYTICS=1 # Homebrew disable telemetry
   export HOMEBREW_NO_ENV_HINTS=1 # Hide hints for cleaner logs
+  export NONINTERACTIVE=1        # Disable Interactive asks
 }
 
 ### Check for SUDO
 ### access check to
 ### validate
 sudo_access_check() {
-  if [ "$(id -u)" = 0 ]; then
-    echo "Hey, welcome! I got (sudo) access"
+  echo "Requesting administrator access..."
+
+  if sudo -v; then
+    echo "Hey, welcome! I got access"
     echo "Thank you for your trust, so"
     echo "i will continue my processes"
   else
-    if sudo -A true; then
-      echo "Hey, welcome! I got valid password"
-      echo "Thank you for your trust, so"
-      echo "i will continue my processes"
-    else
-      echo "Hey, how are you?"
-      echo "Seems password is not valid"
-      echo "Please check enter again..."
-      echo "Thank you"
-      rm -rf askpass.sh
-      exit 1
-    fi
+    echo "Hey, how are you?"
+    echo "Unfortunately cannot access"
+    echo "Please check sudo access again..."
+    echo "Thank you"
+    exit 1
   fi
 }
 
@@ -110,12 +88,12 @@ sudo_access_check() {
 optimizations_setup() {
   echo "------"
 
-  sudo -A mdutil -a -i off
-  sudo -A defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+  sudo mdutil -a -i off
+  sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
   killall mds >/dev/null 2>&1
-  sudo -A mdutil -a -i off
-  sudo -A mdutil -a -i off /
-  sudo -A mdutil -a -i off /*
+  sudo mdutil -a -i off
+  sudo mdutil -a -i off /
+  sudo mdutil -a -i off /*
 
   defaults write com.apple.Siri StatusMenuVisible -bool false
   defaults write com.apple.Siri UserHasDeclinedEnable -bool true
@@ -227,7 +205,7 @@ settings_setup() {
   defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
   # Keyboard (UI tooltip)
-  sudo -A defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+  sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
 
   # Sound
   defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
@@ -348,7 +326,6 @@ external_setup() {
 #############################
 check_and_prepare() {
   check_env
-  configure_askpass
   configure_env
   sudo_access_check
 }
@@ -523,7 +500,7 @@ post_installation() {
   # mutagen daemon start
 
   # GnuPG configuration
-  sudo -A rm -rf "$HOME/.gnupg/gpg-agent.conf"
+  sudo rm -rf "$HOME/.gnupg/gpg-agent.conf"
   echo "pinentry-program $(which pinentry-mac)" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "default-cache-ttl 3600" >>"$HOME/.gnupg/gpg-agent.conf"
   echo "max-cache-ttl 14400" >>"$HOME/.gnupg/gpg-agent.conf"
@@ -539,11 +516,11 @@ post_installation() {
   nvim -c "PlugInstall" -c "qa"
 
   # use XCode SDK tools
-  sudo -A xcode-select -s /Applications/Xcode.app/Contents/Developer
-  sudo -A xcodebuild -license accept
+  sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+  sudo xcodebuild -license accept
 
   if [ ! -f "${BREW_PREFIX}/bin/python" ] && [ -f "${BREW_PREFIX}/bin/python3" ]; then
-    sudo -A ln -s "$BREW_PREFIX/bin/python3" "$BREW_PREFIX/bin/python"
+    sudo ln -s "$BREW_PREFIX/bin/python3" "$BREW_PREFIX/bin/python"
     echo "Python3 → Python2 patch was applied"
   fi
 
@@ -551,42 +528,42 @@ post_installation() {
   rustup-init --profile complete --default-toolchain stable -y --no-modify-path
 
   # link OpenJDK
-  sudo -A ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk"
+  sudo ln -sfn "$BREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk"
   echo "OpenJDK patch was applied"
 
   # locate binaries
-  sudo -A ln -vh "$PWD/utils/remme.sh" "$BREW_PREFIX/bin/remme"
-  sudo -A ln -vh "$PWD/utils/git-show-lfs.sh" "$BREW_PREFIX/bin/git-show-lfs"
-  sudo -A ln -vh "$PWD/utils/mkv2mp4.sh" "$BREW_PREFIX/bin/mkv2mp4"
+  sudo ln -vh "$SCRIPT_DIR/utils/remme.sh" "$BREW_PREFIX/bin/remme"
+  sudo ln -vh "$SCRIPT_DIR/utils/git-show-lfs.sh" "$BREW_PREFIX/bin/git-show-lfs"
+  sudo ln -vh "$SCRIPT_DIR/utils/mkv2mp4.sh" "$BREW_PREFIX/bin/mkv2mp4"
 
   ### fish shell configuration
   FISH_SHELL_PATH=$(which fish)
   if grep -o "$FISH_SHELL_PATH" /etc/shells >>/dev/null; then
     echo "Already set fish as list of shells"
   else
-    echo "$FISH_SHELL_PATH" | sudo -A tee -a /etc/shells
+    echo "$FISH_SHELL_PATH" | sudo tee -a /etc/shells
   fi
-  sudo -A chsh -s "$FISH_SHELL_PATH"         # change for root
-  sudo -A chsh -s "$FISH_SHELL_PATH" "$USER" # change for current user
+  sudo chsh -s "$FISH_SHELL_PATH"         # change for root
+  sudo chsh -s "$FISH_SHELL_PATH" "$USER" # change for current user
   echo "shell → fish was set"
 
   # Unstable: Enable Remote Apple Events
-  # sudo -A systemsetup -setremoteappleevents on
+  # sudo systemsetup -setremoteappleevents on
 
   # Unstable: Enable Remote login
-  # sudo -A systemsetup -setremotelogin on
-  # sudo -A dseditgroup -o edit -a "${USER}" -t user com.apple.access_ssh
+  # sudo systemsetup -setremotelogin on
+  # sudo dseditgroup -o edit -a "${USER}" -t user com.apple.access_ssh
 
   # Reload SSHD
   if ! grep 'PasswordAuthentication no' /etc/ssh/sshd_config; then
-    sudo -A launchctl stop com.openssh.sshd
-    echo "PasswordAuthentication no" | sudo -A tee /etc/ssh/sshd_config
-    echo "PubkeyAuthentication yes" | sudo -A tee /etc/ssh/sshd_config
-    sudo -A launchctl stop com.openssh.sshd
+    sudo launchctl stop com.openssh.sshd
+    echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config
+    echo "PubkeyAuthentication yes" | sudo tee /etc/ssh/sshd_config
+    sudo launchctl stop com.openssh.sshd
   fi
 
   # Enable Firewall
-  sudo -A /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
   # Terminal set theme
   defaults write com.apple.Terminal Shell "login -pfql $USER $BREW_PREFIX/bin/fish"
@@ -621,9 +598,6 @@ installation() {
 
   # Flush preferences
   killall cfprefsd 2>/dev/null || true
-
-  # Remove password by removing askpass
-  rm -rf askpass.sh
 
   return 0
 }
