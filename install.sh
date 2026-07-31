@@ -624,7 +624,7 @@ check_and_prepare
 #############################
 ### Retry validation step ###
 #############################
-while true; do
+while [ "$RETRIES" -le "$MAX_TRIES" ]; do
   ### Installation done
   if installation; then
     echo "Your apps installed successfully..."
@@ -640,5 +640,7 @@ while true; do
   fi
 done
 
-# We can kill sleep prevention after successfully installation
-killall caffeinate
+if [ "$RETRIES" -ge "$MAX_TRIES" ]; then
+  echo "Installation failed"
+  exit 1
+fi
