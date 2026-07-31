@@ -604,11 +604,19 @@ installation() {
 
 RETRIES=0
 
-# We should kill sleep prevention before installation
-killall caffeinate
-
 # Avoid sleep for make sure all apps installed
 caffeinate -sdt 43200 &
+CAFFEINATE_PID=$!
+
+# Cleanup script
+cleanup() {
+  kill "$CAFFEINATE_PID" 2>/dev/null || :
+}
+
+# We can kill sleep prevention after successfully installation
+trap cleanup 0
+trap 'exit 1' HUP INT TERM
+
 ### Run preparation
 ### steps once
 check_and_prepare
