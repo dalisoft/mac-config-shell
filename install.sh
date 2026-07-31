@@ -13,7 +13,7 @@ MIN_OS=14.6
 ### Installation variables ###
 ##############################
 MAX_TRIES=5
-
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
