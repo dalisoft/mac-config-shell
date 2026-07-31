@@ -10,7 +10,6 @@ read -r PASSWORD
 stty echo
 printf "\n%s\n" "Did you already backup up your config? [Y]es/[N]o. Default is [Y]:  "
 read -r backup_ask
-PWD=$(pwd)
 OS_VER=$(sw_vers -productVersion | cut -d':' -f2 | tr -d ' ')
 MIN_OS=14.6
 
@@ -72,9 +71,9 @@ configure_askpass() {
 configure_env() {
   export NPM_CONFIG_PREFIX="$HOME/.npm-global"
   export SUDO_ASKPASS="$PWD/askpass.sh"
-  export PATH="$NPM_CONFIG_PREFIX/bin:usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
+  export PATH="$NPM_CONFIG_PREFIX/bin:/usr/local/bin:/opt/homebrew/bin:~/.local/bin:$PATH"
 
-  # Homebrew environemnt variables
+  # Homebrew environment variables
   export HOMEBREW_NO_ANALYTICS=1 # Homebrew disable telemetry
   export HOMEBREW_NO_ENV_HINTS=1 # Hide hints for cleaner logs
 }
