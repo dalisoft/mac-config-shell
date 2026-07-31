@@ -614,7 +614,7 @@ installation() {
   install_bun_npm_packages
   install_fnm_versions
   install_pip_packages
-  install_pipx_packages
+  install_uv_tools
   install_mas_apps
 
   # Post-installation
