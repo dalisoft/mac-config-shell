@@ -25,7 +25,7 @@ LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
 
 BUN_NPM_PACKAGES="@github/copilot @mimo-ai/cli @qwen-code/qwen-code@latest @sourcegraph/amp@latest cline command-code flamebearer git-stats node-gyp nodemon npm npm-check-updates typesync"
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
-UV_TOOLS="claude-monitor osxphotos"
+UV_TOOLS="osxphotos"
 
 FNM_VERSIONS="18.20.8 20.20.2 22.23.2 24.18.1"
 
