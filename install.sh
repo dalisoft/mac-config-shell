@@ -16,7 +16,7 @@ MAX_TRIES=5
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config .pi .omp"
-LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .hushlogin"
+LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .gitignore .gitattributes .gitmodules .hushlogin"
 
 BUN_NPM_PACKAGES="@github/copilot @mimo-ai/cli @qwen-code/qwen-code@latest @sourcegraph/amp@latest cline command-code flamebearer git-stats node-gyp nodemon npm npm-check-updates typesync"
 PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
