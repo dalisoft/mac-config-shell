@@ -1,7 +1,6 @@
 tap "afnanenayet/tap"
 tap "anomalyco/tap"
 tap "can1357/tap"
-tap "dalisoft/tap", trusted: true
 tap "krtirtho/apps", trusted: true
 tap "libsql/sqld", trusted: { formulae: ["sqld"] }
 #tap "mutagen-io/mutagen"
