@@ -1,9 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 set -eu
 
-if [ "${1: -4}" = ".mkv" ]; then
-  filename="${1%.*}"
-  echo "Found mkv file, starting convertation"
+if [ "$#" -eq 0 ]; then
+  exit 1
+fi
+
+case "$1" in
+*.mkv)
+  filename="${1%.mkv}"
+  echo "Found MKV file, starting conversion"
+
   ffmpeg -y -i "$1" \
     -movflags use_metadata_tags \
     -map 0:v \
@@ -12,9 +18,11 @@ if [ "${1: -4}" = ".mkv" ]; then
     -c:a copy \
     -map 0:s \
     -c:s mov_text \
-    -strict unofficial \
     "$filename.mp4"
+
   echo "Done"
-else
+  ;;
+*)
   echo "No MKV file found"
-fi
+  ;;
+esac
