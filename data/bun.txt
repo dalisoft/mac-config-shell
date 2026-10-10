@@ -1,0 +1,7 @@
+command-code
+flamebearer
+git-stats
+node-gyp
+nodemon
+npm-check-updates
+typesync

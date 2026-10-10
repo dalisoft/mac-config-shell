@@ -1,0 +1,6 @@
+jupyterlab
+labelImg
+labelme
+notebook
+psrecord[plot]
+virtualenv

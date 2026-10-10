@@ -18,11 +18,11 @@ ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
 LINK_FOLDERS=".nano .vim .config .pi .omp"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .gitignore .gitattributes .gitmodules .hushlogin"
 
-BUN_NPM_PACKAGES="flamebearer git-stats node-gyp nodemon npm npm-check-updates typesync"
-PIP_PACKAGES="jupyterlab labelImg labelme notebook psrecord[plot] virtualenv"
-UV_TOOLS="osxphotos"
+BUN_NPM_PACKAGES=$(cat "$SCRIPT_DIR/data/bun.txt")
+PIP_PACKAGES=$(cat "$SCRIPT_DIR/data/pip.txt")
+UV_TOOLS=$(cat "$SCRIPT_DIR/data/uv.txt")
 
-FNM_VERSIONS="18.20.8 20.20.2 22.23.2 24.18.1"
+FNM_VERSIONS=$(cat "$SCRIPT_DIR/data/node-vers.txt")
 
 #############################
 ### Preparations of steps ###
@@ -406,7 +406,7 @@ install_system_packages() {
   fi
 
   # Installing bundle
-  brew bundle --no-lock --verbose
+  brew bundle --no-lock --verbose --file="$SCRIPT_DIR/data/Brewfile"
 }
 
 ### Installation npm packages
