@@ -1,0 +1,121 @@
+# Brewfile entry|route|target|parity|note
+# automatic rows are installed by install-windows.ps1 outside WinGet.
+glib|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+pixman|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+cairo|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+giflib|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+openblas|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+sqlite|wsl|Debian SQLite libraries|partial|Native Windows SDK layout differs from Homebrew
+aider|automatic|uv tool aider-chat|exact|Python CLI
+ansible|wsl|Debian Ansible control node|partial|Ansible does not support a native Windows control node
+asitop|unavailable|none|none|Apple Silicon powermetrics has no Windows equivalent
+bash|wsl|Debian Bash|exact|Git Bash is available through Git but WSL provides Unix behavior
+bfg|manual|BFG Repo-Cleaner JAR|partial|Select the upstream JAR version
+cassowary|manual|upstream release|partial|No stable WinGet route is configured
+certbot|wsl|Debian Certbot|partial|Certificate automation is Unix-oriented
+pkgconf|wsl|Debian pkg-config|partial|Native SDK tooling differs
+cocoapods|wsl|Ruby gem cocoapods|partial|Apple SDK and Xcode workflows remain macOS-only
+curl|built-in|curl.exe|partial|Windows ships curl but command semantics can differ
+php|manual|PHP for Windows|exact|Use the vendor binary matching your architecture
+coreutils|wsl|Debian coreutils|exact|WSL preserves Unix command behavior
+pango|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+fdupes|wsl|Debian fdupes|exact|Unix CLI behavior
+unbound|manual|NLnet Labs Windows build|partial|No maintained WinGet route is configured
+fish|wsl|Debian fish|exact|Fish is configured by the Debian installer
+fpart|wsl|Debian fpart|exact|Unix CLI behavior
+frpc|manual|FRP Windows release|exact|Choose a release matching the server
+git-annex|wsl|Debian git-annex|partial|Use a Unix environment for full feature parity
+qt|manual|Qt Online Installer|partial|Native Windows SDK layout differs from Homebrew
+pyqt|manual|Python PyQt package|partial|Install into the selected native Python environment
+git-crypt|wsl|Debian git-crypt|exact|Unix CLI behavior
+git-filter-repo|wsl|Debian git-filter-repo|exact|Unix CLI behavior
+git-remote-gcrypt|wsl|Debian git-remote-gcrypt|exact|Unix CLI behavior
+git-xet|manual|Xet Windows release|exact|Binary release selection is architecture-specific
+hf|automatic|uv tool huggingface_hub[cli]|exact|Provides the hf command
+htop|wsl|Debian htop|partial|Windows process model differs
+iperf|wsl|Debian iperf|exact|Unix CLI behavior
+iperf3|wsl|Debian iperf3|exact|Unix CLI behavior
+jpeg|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+kcov|wsl|Debian kcov|exact|Unix CLI behavior
+lego|automatic|go install github.com/go-acme/lego/v4/cmd/lego@latest|exact|ACME CLI
+less|wsl|Debian less|exact|Unix CLI behavior
+libffi|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+librsvg|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+llama.cpp|manual|llama.cpp Windows release|exact|Choose the CPU or GPU build
+mas|unavailable|winget and Microsoft Store|none|Mac App Store client has no Windows role
+mergiraf|automatic|cargo install mergiraf|exact|Git merge driver
+mole|replacement|winget uninstall|partial|Mole is macOS-specific
+mosh|wsl|Debian mosh|partial|Unix terminal and SSH behavior
+mtr|wsl|Debian mtr|exact|Unix CLI behavior
+nano|wsl|Debian nano|exact|Unix CLI behavior
+nss|wsl|Debian development libraries|partial|Native Windows SDK layout differs from Homebrew
+opencv|wsl|Debian OpenCV libraries|partial|Native Windows SDK layout differs from Homebrew
+anomalyco/tap/opencode|manual|OpenCode standalone Windows CLI|exact|Download the official Windows binary; package-manager installation is unsupported on Windows
+parallel|wsl|Debian parallel|exact|Unix CLI behavior
+pinentry-mac|automatic|Gpg4win pinentry|partial|Windows agent socket behavior differs
+repomix|automatic|Bun global repomix|exact|CLI parity
+rsync|wsl|Debian rsync|exact|Unix CLI behavior
+rust-analyzer|automatic|rustup component rust-analyzer|exact|Rust language server
+shellspec|wsl|Debian ShellSpec|exact|Unix shell test framework
+tkdiff|wsl|Debian tkdiff|exact|Unix GUI behavior
+tmux|wsl|Debian tmux|exact|Unix terminal multiplexer
+tmuxinator|wsl|Debian tmuxinator|exact|Unix terminal multiplexer workflow
+trash|replacement|Recycle Bin tooling|partial|macOS trash command uses Finder APIs
+tree|built-in|tree.exe|partial|Windows command is present on supported releases
+unzip|built-in|Expand-Archive|partial|PowerShell archive command replaces unzip
+wakeonlan|manual|PowerShell Wake-on-LAN tool|partial|Select a maintained Windows implementation
+watchman|wsl|Debian watchman|partial|Native Windows support is not a current parity route
+websocat|manual|websocat Windows release|exact|Download the upstream binary
+wrk|wsl|Debian wrk|exact|Unix CLI behavior
+zbar|wsl|Debian zbar-tools|exact|Unix CLI behavior
+zsh|wsl|Debian zsh|exact|Unix shell behavior
+afnanenayet/tap/diffsitter|automatic|cargo install diffsitter|exact|CLI parity
+supabase/tap/supabase|manual|project-local npm or vendor package|partial|Official npm route is project-local rather than global
+turso|wsl|Turso CLI via Debian WSL|exact|The documented installation route supports Linux and Windows WSL
+affinity|manual|Affinity Windows installer|partial|Check suite and document compatibility before migration
+aldente|unavailable|hardware-specific power controls|none|Mac battery controller has no Windows equivalent
+antigravity|manual|vendor Windows installer|partial|Vendor availability can change
+antigravity-ide|manual|vendor Windows installer|partial|Vendor availability can change
+appcleaner|replacement|winget uninstall|partial|AppCleaner is macOS-specific
+block-goose|manual|upstream Windows release|partial|No stable WinGet route is configured
+boop|replacement|scripts or browser tools|partial|Boop is macOS-specific
+coconutbattery|unavailable|hardware-specific tools|none|Mac battery APIs are unavailable on Windows
+codex|replacement|ChatGPT Windows app|partial|No separate Codex desktop package is configured
+codexbar|unavailable|none|none|macOS menu-bar integration is unavailable
+core-tunnel|manual|vendor Windows release|partial|No stable WinGet route is configured
+droid|manual|vendor Windows release|partial|No stable WinGet route is configured
+excalidrawz|web|Excalidraw web app|partial|The macOS wrapper does not transfer
+factory|manual|vendor Windows release|partial|Vendor availability can change
+ghostty|unavailable|Windows Terminal or WezTerm|partial|No supported Ghostty Windows release is configured
+grok-build|manual|vendor Windows release|partial|Vendor availability can change
+itermai|unavailable|none|none|No established Windows release
+kiro|manual|Kiro Windows installer|partial|Vendor availability can change
+kiro-cli|manual|Kiro CLI Windows installer|partial|Vendor availability can change
+knockknock|replacement|Microsoft Defender|partial|KnockKnock is macOS-specific
+lulu|replacement|Windows Firewall|partial|LuLu is macOS-specific
+opencode-desktop|manual|OpenCode Windows desktop release|partial|Separate desktop package from CLI
+reikey|unavailable|none|none|macOS malware tool has no Windows port
+rio|manual|Rio Windows release|exact|Use the upstream binary
+rsyncui|unavailable|none|none|rsyncui is macOS-specific
+superset|wsl|Superset Linux AppImage or container|partial|No native Windows desktop app
+tablepro|unavailable|none|none|No Windows release
+tg-pro|unavailable|hardware-specific monitoring|none|Mac temperature APIs are unavailable
+zedis|manual|Zedis Windows release|exact|Use the vendor release
+AdGuard Mail|web|AdGuard Mail web app|partial|No native Windows app is configured
+Apple Configurator|unavailable|none|none|Apple device provisioning requires macOS
+Blackmagic RAW Speed Test|manual|Blackmagic RAW Windows installer|exact|Install from the vendor
+CompareMerge2|unavailable|none|none|No Windows release identified
+Data Modeler|replacement|DBeaver Community|partial|No native Windows release identified
+Disk Decipher|unavailable|none|none|No Windows release identified
+Enchanted|replacement|LM Studio or ChatGPT|partial|No native Windows release identified
+Exporter|unavailable|none|none|Apple Notes export workflow must be completed on macOS
+iPreview|unavailable|File Explorer previews|partial|No exact Windows app
+LG Screen Manager|manual|LG Windows utility|partial|Depends on the connected LG model
+NextDNS|manual|NextDNS Windows CLI or DNS setup|partial|Service client replaces the Mac App Store app
+Perplexity|web|Perplexity web app|partial|No established Windows package is configured
+Photomator|unavailable|none|none|No Windows release identified
+Pixelmator Pro|unavailable|none|none|No Windows release identified
+RectLabel Pro|replacement|labelme|partial|Label format compatibility must be checked
+TestFlight|unavailable|none|none|Apple beta distribution requires Apple platforms
+VN|manual|VN Windows installer|exact|Install from the vendor
+Xcode|unavailable|none|none|Apple SDK and simulator workflows require macOS

@@ -1,0 +1,51 @@
+# Brewfile name|Flathub application ID. Flatpak is for desktop apps only.
+1password|com.1password.1Password
+affine|io.github.toeverything.AFFiNE
+alacritty|org.alacritty.Alacritty
+android-studio|com.google.AndroidStudio
+anytype|io.anytype.anytype
+appflowy|io.appflowy.AppFlowy
+contour|org.contourterminal.Contour
+discord|com.discordapp.Discord
+cryptomator|org.cryptomator.Cryptomator
+dbeaver-community|io.dbeaver.DBeaverCommunity
+drawio|com.jgraph.drawio.desktop
+firefox|org.mozilla.firefox
+handbrake-app|fr.handbrake.ghb
+jan|io.github.janhq.Jan
+kitty|net.kovidgoyal.kitty
+localsend|org.localsend.localsend_app
+maccy|com.github.hluk.copyq
+microsoft-edge|com.microsoft.Edge
+mongodb-compass|com.mongodb.Compass
+moonlight|com.moonlight_stream.Moonlight
+mullvad-vpn|net.mullvad.MullvadVPN
+netnewswire|io.gitlab.news_flash.NewsFlash
+obsidian|md.obsidian.Obsidian
+orbstack|io.podman_desktop.PodmanDesktop
+postico|io.dbeaver.DBeaverCommunity
+postman|com.getpostman.Postman
+qbittorrent|org.qbittorrent.qBittorrent
+rapidapi|com.getpostman.Postman
+requestly|com.requestly.Requestly
+send-to-kindle|com.amazon.sendtokindle
+soulver|io.github.Qalculate.qalculate-qt
+sublime-text|com.sublimetext.three
+telegram-desktop|org.telegram.desktop
+ungoogled-chromium|io.github.ungoogled_software.ungoogled_chromium
+veracrypt|org.veracrypt.VeraCrypt
+visual-studio-code|com.visualstudio.code
+webstorm|com.jetbrains.WebStorm
+wezterm|org.wezfurlong.wezterm
+zed|dev.zed.Zed
+Microsoft Word|org.libreoffice.LibreOffice
+Microsoft Excel|org.libreoffice.LibreOffice
+Microsoft PowerPoint|org.libreoffice.LibreOffice
+affinity|org.gimp.GIMP
+affinity|org.kde.krita
+affinity|org.inkscape.Inkscape
+Pixelmator Pro|org.gimp.GIMP
+Pixelmator Pro|org.kde.krita
+Pixelmator Pro|org.inkscape.Inkscape
+Infuse|org.videolan.VLC
+Hex Fiend|io.github.WerWolv.ImHex

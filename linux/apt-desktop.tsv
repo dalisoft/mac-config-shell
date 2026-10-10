@@ -1,0 +1,10 @@
+# Brewfile name|Debian APT package for desktop use.
+font-fira-code|fonts-firacode
+font-jetbrains-mono|fonts-jetbrains-mono
+calibre|calibre
+kdiff3|kdiff3
+meld|meld
+syncthing-app|syncthing
+The Unarchiver|file-roller
+Windows App|remmina
+utm|virt-manager

@@ -1,0 +1,113 @@
+# Brewfile entry|route|target|parity|note
+# automatic rows are installed by install-debian.sh outside APT and Flatpak.
+aider|automatic|uv tool aider-chat|exact|Python CLI
+asitop|unavailable|btop|none|Apple Silicon powermetrics has no Linux equivalent
+bfg|manual|BFG Repo-Cleaner JAR|partial|Select the upstream JAR version
+bitwise|manual|upstream release|partial|No stable Debian package route
+cassowary|manual|upstream release|partial|No stable Debian package route
+cocoapods|automatic|Ruby gem cocoapods|partial|Apple SDK and Xcode workflows remain macOS-only
+deno|automatic|official Deno installer|exact|Current Deno binary
+dprint|automatic|Bun global dprint|exact|CLI parity
+fnm|automatic|official fnm installer|exact|Node version manager
+frpc|manual|FRP upstream release|exact|Choose a release matching the server
+git-cliff|automatic|cargo install git-cliff|exact|CLI parity
+git-sizer|automatic|go install github.com/github/git-sizer@latest|exact|CLI parity
+git-xet|manual|Xet upstream release|exact|Binary release selection is architecture-specific
+helm|automatic|Helm official installer|exact|Kubernetes CLI
+hf|automatic|uv tool huggingface_hub[cli]|exact|Provides the hf command
+kind|automatic|go install sigs.k8s.io/kind@latest|exact|Kubernetes-in-Docker CLI
+lego|automatic|go install github.com/go-acme/lego/v4/cmd/lego@latest|exact|ACME CLI
+llama.cpp|manual|upstream build|exact|Build options depend on CPU and GPU backend
+mas|unavailable|APT and Flatpak|none|Mac App Store client has no Linux role
+mergiraf|automatic|cargo install mergiraf|exact|Git merge driver
+mkcert|automatic|go install filippo.io/mkcert@latest|exact|Local certificate CLI
+mole|replacement|APT or Flatpak removal|partial|Mole is macOS-specific
+anomalyco/tap/opencode|automatic|OpenCode official installer|exact|CLI parity
+pnpm|automatic|Bun global pnpm|exact|Package manager
+repomix|automatic|Bun global repomix|exact|CLI parity
+rustup|automatic|Rustup official installer|exact|Rust toolchain manager
+shellspec|automatic|Ruby gem shellspec|exact|Shell test framework
+tmuxinator|automatic|Ruby gem tmuxinator|exact|Tmux project manager
+uv|automatic|Astral uv installer|exact|Python tool manager
+volta|automatic|Volta official installer|exact|Node tool manager
+wasm-pack|automatic|cargo install wasm-pack|exact|Wasm build CLI
+yarn|automatic|Bun global yarn|exact|Package manager
+afnanenayet/tap/diffsitter|automatic|cargo install diffsitter|exact|CLI parity
+oven-sh/bun/bun|automatic|Bun official installer|exact|Runtime and package manager
+supabase/tap/supabase|manual|project-local npm or vendor package|partial|Official npm route is project-local rather than global
+turso|automatic|Turso official installer|exact|CLI parity
+1password-cli|manual|1Password Linux repository|exact|Vendor APT repository is required
+adguard|manual|AdGuard Linux CLI|partial|Linux has CLI functionality instead of the macOS app
+adguard-vpn|manual|AdGuard VPN Linux CLI|partial|Linux has CLI functionality instead of the macOS app
+aldente|unavailable|hardware-specific power controls|none|Mac battery controller has no generic Linux equivalent
+altair-graphql-client|replacement|ArdorQuery or Postman|partial|No verified Altair Flatpak route is configured
+altserver|unavailable|none|none|iOS sideloading workflow is Apple-platform-specific
+antigravity|manual|vendor Linux installer|partial|Vendor availability can change
+antigravity-ide|manual|vendor Linux installer|partial|Vendor availability can change
+appcleaner|replacement|APT and Flatpak removal|partial|AppCleaner is macOS-specific
+block-goose|manual|upstream release|partial|No maintained Debian package route is configured
+boop|replacement|scripts or browser tools|partial|Boop is macOS-specific
+browserstacklocal|manual|BrowserStack Local binary|exact|Download the vendor Linux binary
+chatgpt|manual|OpenAI Linux desktop preview|partial|Use the vendor package matching the Debian release
+claude-code|automatic|Bun global @anthropic-ai/claude-code|exact|CLI parity
+coconutbattery|unavailable|hardware-specific tools|none|Mac battery APIs are unavailable on Linux
+codex|replacement|ChatGPT Linux desktop preview|partial|No separate Codex desktop package is configured
+codexbar|unavailable|none|none|macOS menu-bar integration is unavailable
+core-tunnel|manual|vendor Linux release|partial|No stable APT or Flatpak route is configured
+cyberduck|replacement|duck CLI|partial|Cyberduck desktop does not have a Linux build
+droid|manual|vendor Linux release|partial|No stable Debian package route is configured
+excalidrawz|web|Excalidraw web app|partial|The macOS wrapper does not transfer
+factory|manual|vendor Linux release|partial|Vendor availability can change
+figma|web|Figma web app|partial|No supported native Linux desktop app
+gcloud-cli|manual|Google Cloud CLI APT repository|exact|Vendor repository is needed for current releases
+ghostty|manual|Ghostty Linux package|exact|Use the vendor package for the Debian release
+grok-build|manual|vendor Linux release|partial|Vendor availability can change
+imazing|unavailable|none|none|No native Linux iMazing app
+iterm2|replacement|Ghostty Kitty Alacritty or WezTerm|partial|iTerm2 is macOS-specific
+itermai|unavailable|none|none|No established Linux desktop release
+kap|replacement|GNOME screen recorder|partial|Kap is macOS-specific
+kiro|manual|Kiro Linux installer|partial|Vendor availability can change
+kiro-cli|manual|Kiro CLI Linux installer|partial|Vendor availability can change
+knockknock|replacement|ClamAV or OpenSnitch|partial|KnockKnock is macOS-specific
+lm-studio|manual|LM Studio AppImage|exact|Use the vendor Linux package
+lulu|replacement|OpenSnitch|partial|LuLu is macOS-specific
+lunacy|unavailable|none|none|No native Linux Lunacy app
+miniforge|manual|Miniforge installer|exact|Use the vendor installer for architecture
+ngrok|manual|ngrok Linux installer|exact|Vendor account and authentication are required
+opencode-desktop|manual|OpenCode Linux AppImage|partial|Separate desktop package from CLI
+parsec|manual|Parsec Linux client|partial|Linux client cannot host sessions
+raindropio|web|Raindrop.io web app|partial|No established native Linux app
+redis-insight|manual|Redis Insight Linux package|exact|Use vendor package or AppImage
+redis-pro|replacement|Redis Insight|partial|Redis Pro is macOS-specific
+reikey|unavailable|none|none|macOS malware tool has no Linux port
+rio|manual|Rio Linux release|exact|Use the upstream binary
+rsyncui|unavailable|none|none|rsyncui is macOS-specific
+superset|manual|Superset AppImage|partial|Linux release is experimental
+tableplus|manual|TablePlus Debian package|exact|Use the vendor package for the Debian release
+tablepro|unavailable|none|none|Linux build is not available
+tailscale-app|manual|Tailscale APT repository|partial|Linux uses the daemon and CLI rather than the macOS app
+tg-pro|unavailable|hardware-specific monitoring|none|Mac temperature APIs are unavailable
+zedis|manual|Zedis AppImage or Debian package|exact|Use the vendor release
+AdGuard Mail|web|AdGuard Mail web app|partial|No native Linux app is configured
+Apple Configurator|unavailable|none|none|Apple device provisioning requires macOS
+Blackmagic Disk Speed Test|replacement|fio or GNOME Disks|partial|Exact utility is not available
+Blackmagic RAW Speed Test|manual|Blackmagic RAW Linux installer|partial|Vendor package compatibility depends on Debian release
+CapCut|web|CapCut web app|partial|No official native Linux desktop app
+CompareMerge2|unavailable|none|none|No native Linux release identified
+Data Modeler|replacement|DBeaver Community|partial|No native Linux release identified
+Disk Decipher|unavailable|none|none|No native Linux release identified
+Enchanted|replacement|Jan or LM Studio|partial|No native Linux release identified
+Exporter|unavailable|none|none|Apple Notes export workflow must be completed on macOS
+iPreview|replacement|GNOME Sushi or file-manager previews|partial|No exact Linux app
+LG Screen Manager|manual|monitor-vendor utility|partial|Depends on the connected LG model
+Medis|replacement|Redis Insight|partial|No native Linux release identified
+NextDNS|manual|NextDNS Linux CLI|partial|Service CLI replaces the Mac App Store client
+OpenCat|replacement|Jan or LM Studio|partial|No native Linux release identified
+Perplexity|web|Perplexity web app|partial|No established native Linux app
+Photomator|unavailable|none|none|No native Linux release identified
+RectLabel Pro|replacement|labelme|partial|Label format compatibility must be checked
+Sequel Ace|replacement|DBeaver Community|partial|No native Linux release identified
+TestFlight|unavailable|none|none|Apple beta distribution requires Apple platforms
+VN|web|VN web app|partial|No native Linux release identified
+WebSocket Client|replacement|Postman|partial|No native Linux release identified
+Xcode|unavailable|none|none|Apple SDK and simulator workflows require macOS

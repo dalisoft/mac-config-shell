@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BREWFILE = ROOT / "Brewfile"
+BREWFILE = ROOT / "data" / "Brewfile"
 ENTRY_RE = re.compile(r'^\s*(brew|cask|mas)\s+"([^"]+)"', re.MULTILINE)
 
 MANIFESTS = {

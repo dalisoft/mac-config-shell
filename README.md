@@ -1,15 +1,104 @@
 # mac-config-shell
 
-A "shell" script which configures machine on macOS
-**Compatible with Apple Silicon**, supports only Sonoma 14.6+ for now
-_Support for Sonoma, Sequoia or later will be added later_
+A shell configuration project for macOS, Debian, and Windows.
+
+The macOS setup remains the original Homebrew-based installer. Debian and
+Windows counterparts track every active `Brewfile` entry and preserve the
+original runtime, dotfile, GPG, Neovim, helper-command, and security setup
+where the target platform supports it.
+
+**macOS:** compatible with Apple Silicon and Sonoma 14.6+. Debian uses APT
+and Flathub; Windows uses WinGet.
 
 ## Note
 
 > This configuration was made for remote employee who work always from home and has it's secure home for it. No one touches to my machine
 > **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
 
-Looking similar for Windows? Look at [Windows version](https://github.com/dalisoft/win-install)
+Debian and Windows counterparts are included below. The older separate
+[Windows project](https://github.com/dalisoft/win-install) is also available.
+
+## Debian / APT
+
+Use a Debian desktop (or an APT-based Debian derivative), with `sudo`, `curl`,
+and `git` installed. Run as your normal user:
+
+```sh
+bash install-debian.sh --plan
+bash install-debian.sh
+```
+
+`--plan` prints the mappings without making changes. `--no-gui` skips desktop
+apps, `--no-dotfiles` preserves your existing dotfiles, and
+`--no-language-tools` skips fnm, Node, Bun, Deno, uv, Rust, Go, and their
+global tools. `--no-host-settings` skips the login shell, GPG, Java, Neovim,
+helpers, desktop preferences, firewall, and SSH configuration. `--no-security`
+skips only the UFW and OpenSSH changes.
+
+APT choices are in [linux/apt-packages.tsv](linux/apt-packages.tsv) and
+[linux/apt-desktop.tsv](linux/apt-desktop.tsv); Flathub IDs are in
+[linux/flatpak-apps.tsv](linux/flatpak-apps.tsv). The installer checks which APT
+packages exist in your configured release, installs each available package,
+and reports unavailable or failed entries. It installs Flatpak desktop apps
+per user. Fast-moving runtimes use their official upstream installers.
+
+The dotfile step clones `dalisoft/dotfiles` to `~/Desktop/dotfiles`, as the
+macOS installer does. It moves an existing target to
+`~/.config-backup/<timestamp>/` before linking `.nano`, `.vim`, `.config`,
+`.pi`, `.omp`, and the original dotfiles. On GNOME, it applies the closest
+equivalents of the Finder, light-theme, input, workspace, lock-screen, and
+screenshot settings. By default it also makes Fish the login shell, enables
+UFW, and configures OpenSSH for public-key authentication.
+
+## Windows / WinGet
+
+Run in an elevated PowerShell on Windows 10/11 with WinGet. The default setup
+also enables Windows Defender Firewall, installs OpenSSH Server, and disables
+SSH password authentication:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install-windows.ps1 -Plan
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install-windows.ps1
+```
+
+`-NoDotfiles`, `-NoLanguageTools`, and `-NoSettings` omit those steps.
+`-NoHostSettings` lets a standard user install the app and tool set without
+changing OpenSSH or firewall settings; `-NoSecurity` retains other host setup
+but skips those security changes. `-InstallWSL` additionally starts a Debian
+WSL installation, which may require a reboot. After WSL setup, clone this
+repository **inside Debian** and run `bash install-debian.sh --no-gui` for the
+Unix-only command-line tools.
+
+Windows apps and native developer tools are listed in
+[windows/winget-packages.tsv](windows/winget-packages.tsv). Each exact WinGet
+ID is checked at run time, then installed separately. Missing IDs and failed
+installers appear in the summary. The dotfile step uses the same
+`~/Desktop/dotfiles` location and the same folders/files as macOS; it creates
+symbolic links when permitted and safely copies a target when Windows link
+permissions are unavailable. It sets File Explorer extensions, a light theme,
+text-input preferences, lock-screen protection, screenshot location, GPG
+agent settings, `JAVA_HOME`, Neovim plugins, and Windows versions of the
+original helper commands.
+
+Every active `Brewfile` entry appears in a platform manifest. Items without a
+native package route are recorded with an `automatic`, `manual`, `wsl`,
+`replacement`, `web`, or `unavailable` outcome in
+[linux/other-packages.tsv](linux/other-packages.tsv) and
+[windows/other-packages.tsv](windows/other-packages.tsv). This makes the
+remaining platform limits inspectable instead of silently omitting them.
+
+Apple-only tools and workflows such as Xcode, `mas`, Apple Configurator,
+TestFlight, Finder/Dock internals, and hardware utilities cannot have identical
+Debian or Windows behavior. Commercial apps may need a sign-in or vendor
+installer. Debian package availability and WinGet/Flathub IDs vary by release
+and architecture. Run the coverage check at any time with:
+
+```sh
+python3 scripts/verify-portability-manifests.py
+```
+
+The GitHub workflow parses both installers and renders their plans on Ubuntu
+and Windows runners.
 
 ## Used projects
 
