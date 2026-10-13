@@ -92,12 +92,14 @@ optimizations_setup() {
   sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
   killall mds >/dev/null 2>&1
   sudo mdutil -a -i off
-  sudo mdutil -a -i off /
-  sudo mdutil -a -i off /*
+  sudo mdutil -a -d
 
   defaults write com.apple.Siri StatusMenuVisible -bool false
   defaults write com.apple.Siri UserHasDeclinedEnable -bool true
   defaults write com.apple.assistant.support "Assistant Enabled" 0
+
+  sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.siri.agent.plist
+  sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.siri_actionsd.plist
 }
 
 finder_setup() {
