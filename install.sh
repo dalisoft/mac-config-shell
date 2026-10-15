@@ -15,7 +15,7 @@ MIN_OS=14.6
 MAX_TRIES=5
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 ENSURE_FOLDERS=".npm-global/lib .vim/autoload .gnupg"
-LINK_FOLDERS=".nano .vim .config .pi .omp"
+LINK_FOLDERS=".nano .vim .config .pi .commandcode .omp"
 LINK_FILES=".nanorc .vimrc .tmux.conf .gitconfig .gitignore .gitattributes .gitmodules .hushlogin"
 
 BUN_NPM_PACKAGES=$(cat "$SCRIPT_DIR/data/bun.txt")
