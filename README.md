@@ -2,18 +2,18 @@
 
 A "shell" script which configures machine on macOS
 **Compatible with Apple Silicon**, supports only Sonoma 14.6+ for now
-_Support for Sonoma, Sequoia or later will be added later_
+
+> _Support for Sonoma, Sequoia or later will be added later_
 
 ## Note
 
-> This configuration was made for remote employee who work always from home and has it's secure home for it. No one touches to my machine
-> **I do not guarantee nor support for your any damage & data loss, do & run it at your own risk**
+> This configuration was made for remote employee who work always from home and
+> has it's secure home for it. No one touches to my machine
+>
+> **I do not guarantee nor support for your any damage & data loss,
+> do & run it at your own risk**
 
 Looking similar for Windows? Look at [Windows version](https://github.com/dalisoft/win-install)
-
-## Used projects
-
-- <https://github.com/mathiasbynens/dotfiles/blob/main/.macos>
 
 ## Guide
 
@@ -82,6 +82,10 @@ find ~/.gnupg -type f | xargs -L1 sudo chmod 600
 
 - [`78c55d`](https://github.com/dalisoft/config/commit/78c55d1182d93ccde8b5a82958ee3afbbbf9e2bd) until [`409750`](https://github.com/dalisoft/config/commit/4097507eb225644425e37dca15965f3a2b0aca40) commits, see [compare](https://github.com/dalisoft/ansible-config/compare/78c55d...409750)
 - [`ae9e98`](https://github.com/dalisoft/ansible-config/commit/ae9e9892b770ab3817107a56271a96d6deb1558a) until [`fe1c09`](https://github.com/dalisoft/ansible-config/commit/fe1c09426aec767ba8471f496e91bb21a0be091b) commits, see [compare](https://github.com/dalisoft/ansible-config/compare/ae9e98...fe1c09)
+
+## Credits
+
+- <https://github.com/mathiasbynens/dotfiles/blob/main/.macos>
 
 ## License
 
